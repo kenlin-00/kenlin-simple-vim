@@ -152,7 +152,5 @@
 #*.symversions
 
 # ignore another git repository
-/vim/*
-/vim/*.git
-/vim/*.git*
+/vim/bundle/*
 
