@@ -179,7 +179,10 @@ set background=dark
 let g:molokai_original=1
 let g:rehash256 = 1
 " colorschemes
+" 默认主题
 colorscheme gruvbox
+" 解决 git commit 注释信息看不清问题
+autocmd BufRead COMMIT_EDITMSG,HEAD,FETCH_HEAD,config colorscheme evening
   
 "gtags.vim 设置项
 let GtagsCscope_Auto_Load = 1

@@ -102,7 +102,10 @@ set background=dark
 let g:molokai_original=1
 let g:rehash256 = 1
 " colorschemes
+" 默认主题
 colorscheme gruvbox
+" 解决 git commit 注释信息看不清问题
+autocmd BufRead COMMIT_EDITMSG,HEAD,FETCH_HEAD,config colorscheme evening
   
 "gtags.vim 设置项
 let GtagsCscope_Auto_Load = 1
@@ -142,5 +145,3 @@ nmap ccg :cs find g <C-R>=expand("<cword>")<CR><CR>
 nmap ccd :cs find d <C-R>=expand("<cword>")<CR><CR>
 " Find reference    :cs find 3 or c
 nmap ccc :cs find c <C-R>=expand("<cword>")<CR><CR>
-
-
