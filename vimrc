@@ -61,9 +61,9 @@ map <C-n> :Tagbar<CR>
 " nerdtree 目录树
 map <C-b> :NERDTreeToggle<CR>
 let NERDTreeWinPos='right'
-"autocmd vimenter * NERDTree  "自动开启Nerdtree  文件列表
-wincmd w   " 自动打开后光标在代码区
-autocmd VimEnter * wincmd w
+" autocmd vimenter * NERDTree  "自动开启Nerdtree  文件列表
+" wincmd w   " 自动打开后光标在代码区
+" autocmd VimEnter * wincmd w
 let g:NERDTreeWinSize=28  " 目录栏宽度
 "打开vim时如果没有文件自动打开NERDTree
 ""autocmd vimenter * if !argc()|NERDTree|endi
