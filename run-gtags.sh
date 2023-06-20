@@ -1,5 +1,7 @@
 #!/bin/bash
 
+#use:run-gtags.sh
+
 current_path=$(pwd)
 cd ${current_path}
 
