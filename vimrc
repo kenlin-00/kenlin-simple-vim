@@ -1,3 +1,6 @@
+" kendall-simple-vim
+" https://github.com/kendall-cpp/kendall-simple-vim
+" config for vim
 
 " Vim 在与屏幕/键盘交互时使用的编码(取决于实际的终端的设定)        
 set encoding=utf-8
@@ -13,9 +16,9 @@ set nu   " 显示行号
 syntax on "自动语法高亮
 set hlsearch " 搜索高亮
 
-" kernel 建议增加下面几行配置
+" kernel 建议增加下面几行配置  "expandtab 转成空格
 autocmd FIletype json,xml,c,cpp,h,vim,conf,bind,gitcommit setlocal tabstop=8 softtabstop=8 shiftwidth=8 noexpandtab 
-autocmd FIletype make,tags,kconfig,txt,mk,def setlocal tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab "expandtab 转成空格
+autocmd FIletype make,tags,kconfig,txt,mk,def setlocal tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
 autocmd FIletype sh setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 autocmd FIletype dtsi,dts setlocal tabstop=2 softtabstop=2 shiftwidth=2 noexpandtab
 " 其他的默认为4
