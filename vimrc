@@ -18,8 +18,8 @@ set hlsearch " 搜索高亮
 
 " kernel 建议增加下面几行配置  "expandtab 转成空格
 autocmd FIletype json,xml,c,cpp,h,vim,conf,bind,gitcommit setlocal tabstop=8 softtabstop=8 shiftwidth=8 noexpandtab 
-autocmd FIletype make,tags,kconfig,txt,mk,def setlocal tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
-autocmd FIletype sh setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
+autocmd FIletype tags,kconfig,txt,def setlocal tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
+autocmd FIletype sh,mk,make setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 autocmd FIletype dtsi,dts setlocal tabstop=2 softtabstop=2 shiftwidth=2 noexpandtab
 " 其他的默认为4
 set tabstop=4
@@ -54,10 +54,42 @@ set runtimepath^=~/.vim/bundle/ag
 nmap ag :Ag -w <C-R>=expand("<cword>")<CR><CR>   "Ag 查找当成层级
 nmap af :Ag -w <C-R>=expand("<cword>")<CR> ../<CR> "Ag 查找上一级匹配
 
+" YouCompleteMe
+" 设置是否显示函数使用说明窗口 貌似不起作用？
+set completeopt=menu,menuone
+let g:ycm_add_preview_to_completeopt = 0
+" 关闭显示诊断信息，语言标注出来你代码问题
+let g:ycm_show_diagnostics_ui = 0
+" 补全后自动关闭预览窗口
+let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_min_num_of_chars_for_completion=2  " set autocompletion - min-word
+"注释和字符串中的文字也会被收入补全
+let g:ycm_collect_identifiers_from_comments_and_strings = 0
+
+" 增加一些补全的机制
+" 参考： https://zhuanlan.zhihu.com/p/33046090
+let g:ycm_semantic_triggers =  {
+			\ 'c,cpp,python,java,go,erlang,perl': ['re!\w{2}'],
+			\ 'cs,lua,javascript': ['re!\w{2}'],
+			\ }
+
+" 添加白名单，只有这些文件才会去分析
+let g:ycm_filetype_whitelist = {
+			\ "c":1,
+			\ "cpp":1,
+			\ "objc":1,
+			\ "py":1,
+			\ "sh":1,
+			\ "zsh":1,
+			\ "zimbu":1,
+			\ }
+
 " tagbar 显示函数名和变量
 let g:tagbar_ctags_bin='/usr/bin/ctags'          "ctags程序的路径
 let g:tagbar_left=1 "显示在左边
 let g:tagbar_width=30                  "窗口宽度的设置
+" 1开启自动预览(随着光标在标签上的移动，顶部会出现一个实时的预览窗口)
+let g:tagbar_autopreview = 0
 map <C-n> :Tagbar<CR>
 "autocmd BufReadPost *.cpp,*.c,*.h,*.hpp,*.cc,*.cxx call tagbar#autoopen() "如果是c语言的程序的话，tagbar自动开启
 
