@@ -94,6 +94,7 @@ let g:airline_section_b = '%-0.10{getcwd()}'
 let g:airline_section_c = "%{expand('%:p')}"  " 显示全路径
 let g:airline#extensions#tagbar#enabled = 1
 let g:airline_section_y = ''
+let g:airline_theme='google_dark'
 
 "molokai 主题
 "colorscheme molokai "设置颜色主题"
@@ -145,3 +146,4 @@ nmap ccg :cs find g <C-R>=expand("<cword>")<CR><CR>
 nmap ccd :cs find d <C-R>=expand("<cword>")<CR><CR>
 " Find reference    :cs find 3 or c
 nmap ccc :cs find c <C-R>=expand("<cword>")<CR><CR>
+
