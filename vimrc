@@ -16,16 +16,39 @@ set nu   " 显示行号
 syntax on "自动语法高亮
 set hlsearch " 搜索高亮
 
-" kernel 建议增加下面几行配置  "expandtab 转成空格
-autocmd FIletype json,xml,c,cpp,h,vim,conf,bind,gitcommit setlocal tabstop=8 softtabstop=8 shiftwidth=8 noexpandtab 
-autocmd FIletype tags,kconfig,txt,def setlocal tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
-autocmd FIletype sh,mk,make setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
-autocmd FIletype dtsi,dts setlocal tabstop=2 softtabstop=2 shiftwidth=2 noexpandtab
 " 其他的默认为4
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set noexpandtab  " 不转成空格
+" kernel 建议增加下面几行配置  "expandtab 转成空格
+autocmd FIletype json,xml,c,cpp,h,vim,conf,bind,gitcommit setlocal tabstop=8 softtabstop=8 shiftwidth=8 noexpandtab
+autocmd FIletype dtsi,dts setlocal tabstop=2 softtabstop=2 shiftwidth=2 noexpandtab
+autocmd FIletype sh,mk,make setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab  " for google project
+
+" 设置更改当前文件的 Tab 键宽度的快捷键
+nnoremap <leader>ct :call SetTabWidth()<CR>
+function! SetTabWidth()
+	let tab_width_no = input("请输入新的 Tab 键宽度(1-8)：")
+	let tab_width = matchstr(tab_width_no, '^[1-8]')
+	let expand = tab_width_no =~ '^[1-8] no' ? 0 : 1
+
+	if empty(tab_width)
+		echo "\t无效的输入，Tab 键宽度未更改"
+		return
+	endif
+
+	execute 'set tabstop=' . tab_width
+	execute 'set softtabstop=' . tab_width
+	execute 'set shiftwidth=' . tab_width
+
+	if expand
+		echo "\t已将 Tab 键宽度设置为 " . tab_width . "，expandtab"
+	else
+		execute 'set noexpandtab'
+		echo "\t已将 Tab 键宽度设置为 " . tab_width . "，noexpandtab"
+	endif
+endfunction
 
 set nocompatible
 filetype off
@@ -36,7 +59,7 @@ call vundle#begin()
 " 在此处添加您需要安装的插件
 " Plugin '插件名称'
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'ycm-core/YouCompleteMe'
+"Plugin 'ycm-core/YouCompleteMe'
 Plugin 'majutsushi/tagbar'
 Plugin 'scrooloose/nerdtree'
 Plugin 'vim-airline/vim-airline'
@@ -65,6 +88,8 @@ let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_min_num_of_chars_for_completion=2  " set autocompletion - min-word
 "注释和字符串中的文字也会被收入补全
 let g:ycm_collect_identifiers_from_comments_and_strings = 0
+" 语法高亮
+let g:ycm_enable_semantic_highlighting=1
 
 " 增加一些补全的机制
 " 参考： https://zhuanlan.zhihu.com/p/33046090
