@@ -16,6 +16,25 @@ set nu   " 显示行号
 syntax on "自动语法高亮
 set hlsearch " 搜索高亮
 
+" 搜索时不忽略大小写
+set noic
+
+" 设置是否进入当前打开文件的目录(set autochdir), 快捷键按 \ 然后按 cd
+nnoremap <leader>cd :call ToggleAutochdir()<CR>
+" 全局变量用于存储原始工作目录
+let g:original_cwd = getcwd()
+function! ToggleAutochdir()
+	if &acd
+		set noacd
+		execute 'cd ' . g:original_cwd
+		echo "禁用自动切换工作目录"
+	else
+		set acd
+		echo "启用自动切换工作目录"
+	endif
+endfunction
+
+
 " 其他的默认为4
 set tabstop=4
 set softtabstop=4
@@ -75,7 +94,6 @@ set runtimepath^=~/.vim/bundle/ag
 
 " ag
 nmap ag :Ag -w <C-R>=expand("<cword>")<CR><CR>   "Ag 查找当成层级
-nmap af :Ag -w <C-R>=expand("<cword>")<CR> ../<CR> "Ag 查找上一级匹配
 
 " YouCompleteMe
 " 设置是否显示函数使用说明窗口 貌似不起作用？
