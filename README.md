@@ -244,7 +244,7 @@ nmap ccc :ccs find c <C-R>=expand("<cword>")<CR><CR>
 
 ### 是否自动切换到当前文件目录
 
-按 '\' 然后按 cd
+按 `'\'` 然后按 cd
 
 ### 设置 tab 的空格数
 
@@ -259,7 +259,7 @@ nmap ccc :ccs find c <C-R>=expand("<cword>")<CR><CR>
 
 默认是不开启 YouCompleteMe
 
-可以执行修改 vimrc 文件
+可以自行修改 vimrc 文件
 
 ```
 "Plugin 'ycm-core/YouCompleteMe'    将这行的注释去掉掉即可
