@@ -131,8 +131,9 @@ let g:ycm_filetype_whitelist = {
 let g:tagbar_ctags_bin='/usr/bin/ctags'          "ctags程序的路径
 let g:tagbar_left=1 "显示在左边
 let g:tagbar_width=30                  "窗口宽度的设置
-" 1开启自动预览(随着光标在标签上的移动，顶部会出现一个实时的预览窗口)
+" 1 开启自动预览(随着光标在标签上的移动，顶部会出现一个实时的预览窗口)
 let g:tagbar_autopreview = 0
+let g:tagbar_autofocus = 0  " 光标在文件内
 map <C-n> :Tagbar<CR>
 "autocmd BufReadPost *.cpp,*.c,*.h,*.hpp,*.cc,*.cxx call tagbar#autoopen() "如果是c语言的程序的话，tagbar自动开启
 

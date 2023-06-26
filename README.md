@@ -214,12 +214,71 @@ set cscopeprg=gtags-cscope
 cs add GTAGS
 
 " cscope
-" Find symbol       :cs find 0 or s
-nmap ccs :cs find s <C-R>=expand("<cword>")<CR><CR>
+" Find symbol       :ccs find 0 or s
+nmap ccs :ccs find s <C-R>=expand("<cword>")<CR><CR>
 " Find definition   :cs find 1 or g
-nmap ccg :cs find g <C-R>=expand("<cword>")<CR><CR>
+nmap ccg :ccs find g <C-R>=expand("<cword>")<CR><CR>
 " Find functions called by this function  (gtags not implemented)
-nmap ccd :cs find d <C-R>=expand("<cword>")<CR><CR>
+nmap ccd :ccs find d <C-R>=expand("<cword>")<CR><CR>
 " Find reference    :cs find 3 or c
-nmap ccc :cs find c <C-R>=expand("<cword>")<CR><CR>
+nmap ccc :ccs find c <C-R>=expand("<cword>")<CR><CR>
 ```
+
+> **以上配置说明仅仅是参考，vimrc 配置会不定期更新，具体见 vimrc**
+
+## 快捷键汇总
+
+建议在项目最顶层目录使用 vim 打开文件， 否则 cscope 会失效。
+
+### cscope + ctags 跳转
+
+先执行 run-gtags
+
+然后可以使用 cscope 快捷键
+
+- cs : 查看函数调用关系，**一般使用这个最多**
+- cg : 搜索字符
+- ctrl + ] 跳转到函数定义出
+- ctrl + t 返回 `ctrl + ]`
+- ctrl + o 返回上一处
+
+### 是否自动切换到当前文件目录
+
+按 '\' 然后按 cd
+
+### 设置 tab 的空格数
+
+按 '\' 然后按 ct
+
+- 例如输入： 4 no
+	- 表示 tab 设置为 4 ,且设置 noexpandtab（不转成空格）
+- 例如输入： 8
+	- 表示 tab 设置为 8 ,且设置 expandtab（转成空格）
+
+### 语法补全
+
+默认是不开启 YouCompleteMe
+
+可以执行修改 vimrc 文件
+
+```
+"Plugin 'ycm-core/YouCompleteMe'    将这行的注释去掉掉即可
+```
+
+### 使用 Ag 搜索
+
+直接输入 ag , 在当前文件夹下搜索 光标所在处的字符。
+
+最后结合 `\ + cd` 快捷键使用，这样可以设置搜索的是当前文件的目录，还是整个项目。
+
+- 按 q 可以退出
+
+### 打开文件目录列表窗口
+
+ctrl + b
+
+使用 ctrl + w + 方向键 切换窗口（这是 vim 的快捷键，具体自己网络搜索）
+
+### 打开函数和变量目录列表窗口
+
+ctrl + n
