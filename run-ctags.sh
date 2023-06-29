@@ -1,7 +1,9 @@
 #!/bin/bash
 
-kernel=./kernel/aml-5.4/
-wifi_w1=./hardware/aml-5.4/wifi/amlogic/w1/project_w1/
+# use: run-ctags.sh [kernel-patch] [driver-path]
+
+kernel=$1
+driver_patch=$2
 
 function ctags_all() {
   cmd="ctags --fields=+iaS --extra=+q * --languages=c,c++ -R"
@@ -22,4 +24,4 @@ function ctags_all() {
       mv "$tmp_file" "$tags_file"
     }
 }
-ctags_all $kernel $wifi_w1
+ctags_all $kernel $driver_patch
