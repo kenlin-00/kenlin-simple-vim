@@ -16,6 +16,7 @@ set nu   " 显示行号
 syntax on "自动语法高亮
 set hlsearch " 搜索高亮
 
+
 " 搜索时不忽略大小写
 set noic
 
@@ -39,12 +40,12 @@ endfunction
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
-set expandtab  " 不转成空格
+set noexpandtab  " 不转成空格
 " kernel 建议增加下面几行配置  "expandtab 转成空格
 " autocmd FIletype json,xml,c,cpp,h,vim,conf,bind,gitcommit setlocal tabstop=8 softtabstop=8 shiftwidth=8 noexpandtab
-autocmd FIletype json,xml,c,cpp,h setlocal tabstop=8 softtabstop=8 shiftwidth=8 noexpandtab
-autocmd FIletype dtsi,dts setlocal tabstop=2 softtabstop=2 shiftwidth=2 noexpandtab
-autocmd FIletype sh,mk,make setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab  " for google project
+autocmd FIletype json,xml,c,h setlocal tabstop=8 softtabstop=8 shiftwidth=8 noexpandtab
+autocmd FIletype dtsi,dts,gitcommit setlocal tabstop=2 softtabstop=2 shiftwidth=2 noexpandtab
+autocmd FIletype sh,mk,make,cpp setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab  " for google project
 
 " 设置更改当前文件的 Tab 键宽度的快捷键
 nnoremap <leader>ct :call SetTabWidth()<CR>
@@ -196,35 +197,6 @@ nmap ccd :cs find d <C-R>=expand("<cword>")<CR><CR>
 nmap ccc :cs find c <C-R>=expand("<cword>")<CR><CR>
 
 " YouCompleteMe
-" 临时关闭 YouCompleteMe
-"let g:ycm_global_ycm_extra_conf = 0
-" 关闭悬浮提示窗口
-let g:ycm_hover_disable_while_typing = 1
-
-" 输入两个字符就开始提示补全
-let g:ycm_min_num_identifier_candidate_chars = 2
-
-" 设置为 0 时，函数或变量的预览窗口不会包含在自动补全菜单中，只显示补全项的名称
-let g:ycm_add_preview_to_completeopt = 0
-
-" 关闭显示诊断信息，语言标注出来你代码问题
-let g:ycm_show_diagnostics_ui = 0
-let g:ycm_autoclose_preview_window_after_insertion = 0
-
-" 补全后自动关闭预览窗口
-let g:ycm_autoclose_preview_window_after_completion = 1
-let g:ycm_min_num_of_chars_for_completion=2  " set autocompletion - min-word
-
-"注释和字符串中的文字也会被收入补全
-let g:ycm_collect_identifiers_from_comments_and_strings = 0
-
-" 语法高亮
-"let g:ycm_enable_semantic_highlighting=1"
-
-" menu 表示在自动补全时显示菜单，方便您选择补全项
-" menuone 表示当只有一个补全项时，也显示菜单，以便查看补全项的详情
-set completeopt=menu,menuone
-
 " 增加一些补全的机制
 " 参考： https://zhuanlan.zhihu.com/p/33046090
 let g:ycm_semantic_triggers =  {
@@ -238,8 +210,43 @@ let g:ycm_filetype_whitelist = {
 			\ "cpp":1,
 			\ "objc":1,
 			\ "py":1,
-			\ "sh":1,
-			\ "zsh":1,
-			\ "zimbu":1,
+			\ "sh":0,
+			\ "zsh":0,
+			\ "zimbu":0,
 			\ }
+
+" 临时关闭 YouCompleteMe
+"let g:ycm_global_ycm_extra_conf = 1
+" 关闭悬浮提示窗口
+let g:ycm_hover_disable_while_typing = 1
+
+" 输入两个字符就开始提示补全
+let g:ycm_min_num_identifier_candidate_chars = 2
+
+" 设置为 0 时，函数或变量的预览窗口不会包含在自动补全菜单中，只显示补全项的名称
+let g:ycm_add_preview_to_completeopt = 0
+
+" 关闭显示诊断信息，语言标注出来你代码问题
+"let g:ycm_show_diagnostics_ui = 1
+"let g:ycm_autoclose_preview_window_after_insertion = 1
+
+" 补全后自动关闭预览窗口
+let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_min_num_of_chars_for_completion=2  " set autocompletion - min-word
+
+"注释和字符串中的文字也会被收入补全
+let g:ycm_collect_identifiers_from_comments_and_strings = 1
+
+" 语法高亮
+"let g:ycm_enable_semantic_highlighting=1"
+
+" menu 表示在自动补全时显示菜单，方便您选择补全项
+" menuone 表示当只有一个补全项时，也显示菜单，以便查看补全项的详情
+set completeopt=menu,menuone
+
+
+
+""""""""""""""""
+" 搜索忽略大小写
+"set ignorecase
 
