@@ -15,6 +15,7 @@ set nu   " 显示行号
 
 syntax on "自动语法高亮
 set hlsearch " 搜索高亮
+set incsearch
 
 
 " 搜索时不忽略大小写
