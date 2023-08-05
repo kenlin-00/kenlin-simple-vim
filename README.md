@@ -17,6 +17,54 @@ Plugin 'flazz/vim-colorschemes'
 Plugin 'rking/ag'
 ```
 
+## 安装说明
+
+-  需要安装
+
+```sh
+sudo apt-get install silversearcher-ag
+
+sudo apt-get install cmake
+
+sudo apt-get install ctags
+sudo apt install cscope
+# 手动编译： https://blog.csdn.net/Czouxiaojun/article/details/124443684
+
+添加到 ~/.bashrc
+alias ctags='ctags --fields=+iaS --extra=+q * --languages=c,c++'
+
+# 打开 vim 如果报错，The ycmd server SHUT DOWN (restart with ':YcmRestartServer'). YCM cor...le YCM before using it. Follow the instructions in the documentation，
+# 解决方法
+/usr/bin/python3 /home/kendall/.vim/bundle/youcompleteme/third_party/ycmd/build.py --verbose
+
+
+# 安装插件命令
+:PluginInstall 
+```
+
+- 如果 YcmRestartServer 还报错 
+
+分别执行下面命令升级 cmake
+
+```sh
+sudo apt remove --purge cmake
+sudo apt-get install cmake
+```
+
+- 然后
+
+```sh
+# 修改： /usr/share/cmake-3.16/Modules/FindPythonLibs.cmake 
+set(_PYTHON3_VERSIONS 3.8 3.7 3.6 3.5 3.4 3.3 3.2 3.1 3.0)  # 3.8 是 python 的版本
+
+sudo ln -s /usr/bin/g++-8  /usr/bin/g++
+
+cmake -G "Unix Makefiles" -DPYTHON_INCLUDE_DIRS=/usr/include/python3 DEXTERNAL_LIBCLANG_PATH=/usr/lib/python3.8/config-3.8-x86_64-linux-gnu/libpython3.8.so  . ~/.vim/bundle/youcompleteme/third_party/ycmd/cpp
+
+
+/usr/bin/python3 /home/kendall/.vim/bundle/youcompleteme/third_party/ycmd/build.py --clang-completer --racer-completer --verbose
+```
+
 ## 使用方法
 
 - 备份和新增 vimrc 配置
