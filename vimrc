@@ -17,6 +17,10 @@ syntax on "自动语法高亮
 set hlsearch " 搜索高亮
 set incsearch
 
+"vim自动打开跳到上次的光标位置
+if has("autocmd")
+        au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+endif
 
 " 搜索时不忽略大小写
 set noic
@@ -89,6 +93,10 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'mhinz/vim-startify'   " 输入 vim 显示图案好看
 Plugin 'tomasr/molokai'
 Plugin 'flazz/vim-colorschemes'
+"异步安装
+Plugin 'vim-scripts/fzf-master', { 'do': { -> fzf#install() } }
+""fzf异步模糊查找插件
+Plugin 'vim-scripts/fzf.vim-master'
 call vundle#end()
 filetype plugin indent on
 

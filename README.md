@@ -65,6 +65,22 @@ cmake -G "Unix Makefiles" -DPYTHON_INCLUDE_DIRS=/usr/include/python3 DEXTERNAL_L
 /usr/bin/python3 /home/kendall/.vim/bundle/youcompleteme/third_party/ycmd/build.py --clang-completer --racer-completer --verbose
 ```
 
+### 模糊查找插件
+
+- 两都要下载
+
+```sh
+https://github.com/junegunn/fzf
+https://github.com/junegunn/fzf.vim
+
+~/simple-vim/vim/bundle$ ls
+ fzf  fzf.vim
+```
+
+- fzf安装与部署
+
+
+
 ## 使用方法
 
 - 备份和新增 vimrc 配置
