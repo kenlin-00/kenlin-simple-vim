@@ -27,19 +27,22 @@ if [[ -e "run-ctags.sh" ]]; then
   ./run-ctags.sh ${kernel} ${driver_patch} &
 else
   # 创建ctags索引
-  echo "ctags -R --fields=+iaS --extra=+q * --languages=c,c++"
-  ctags -R --fields=+iaS --extra=+q * --languages=c,c++ && {
-    # 删除查找多余的 EXPORT_SYMBOL
-    # 指定tags文件路径
-    tags_file="tags"
-    # 创建临时文件
-    tmp_file=$(mktemp)
-    # 使用grep过滤包含"EXPORT_SYMBOL"的行，并将结果写入临时文件
-    grep -v "EXPORT_SYMBOL" "$tags_file" > "$tmp_file"
-    # 将临时文件替换原始的tags文件
-    mv "$tmp_file" "$tags_file"
-  } &
-fi
+  echo "ctags -R --fields=+iaS --extras=+q * --languages=c,c++"
+  ctags -R --fields=+iaS --extras=+q * --languages=c,c++;
 
+  # 删除查找多余的 EXPORT_SYMBOL
+  # 指定tags文件路径
+  tags_file="tags"
+  # 创建临时文件
+  tmp_file=$(mktemp)
+  # 使用 fgrep 过滤包含"EXPORT_SYMBOL"的行，并将结果写入临时文件
+  fgrep -v "EXPORT_SYMBOL" "./$tags_file" > "$tmp_file";
+  fgrep -v ".css" "$tmp_file" > "${tmp_file}_1";
+  fgrep -v ".html" "${tmp_file}_1" > "$tmp_file";
+  # 将临时文件替换原始的tags文件
+  mv "$tmp_file" "./$tags_file";
+
+  rm "${tmp_file}_1"
+fi
 cd -
 
