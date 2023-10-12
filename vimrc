@@ -22,12 +22,9 @@ if has("autocmd")
         au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
 
-" 搜索时不忽略大小写
-set noic
-
 " 设置是否进入当前打开文件的目录(set autochdir), 快捷键按 \ 然后按 cd
 nnoremap <leader>cd :call ToggleAutochdir()<CR>
-" 全局变量用于存储原始工作目录
+" 全局变量用于存储原始工作目
 let g:original_cwd = getcwd()
 function! ToggleAutochdir()
 	if &acd
@@ -48,9 +45,9 @@ set shiftwidth=4
 set noexpandtab  " 不转成空格
 " kernel 建议增加下面几行配置  "expandtab 转成空格
 " autocmd FIletype json,xml,c,cpp,h,vim,conf,bind,gitcommit setlocal tabstop=8 softtabstop=8 shiftwidth=8 noexpandtab
-autocmd FIletype json,xml,c,h setlocal tabstop=8 softtabstop=8 shiftwidth=8 noexpandtab
 autocmd FIletype dtsi,dts,gitcommit setlocal tabstop=2 softtabstop=2 shiftwidth=2 noexpandtab
-autocmd FIletype sh,mk,make,cpp setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab  " for google project
+autocmd FIletype sh,mk,make setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab  " for google project
+autocmd FIletype json,xml,c,cpp,h setlocal tabstop=8 softtabstop=8 shiftwidth=8 noexpandtab
 
 " 设置更改当前文件的 Tab 键宽度的快捷键
 nnoremap <leader>ct :call SetTabWidth()<CR>
@@ -254,8 +251,11 @@ let g:ycm_collect_identifiers_from_comments_and_strings = 1
 set completeopt=menu,menuone
 
 
-
 """"""""""""""""
 " 搜索忽略大小写
 "set ignorecase
+" 搜索时不忽略大小写
+set noic
 
+" 防止上面的 autocmd 切换工作目录
+execute 'cd ' . g:original_cwd
