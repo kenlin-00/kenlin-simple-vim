@@ -2,7 +2,7 @@
 " https://github.com/kendall-cpp/kendall-simple-vim
 " config for vim
 
-" Vim 在与屏幕/键盘交互时使用的编码(取决于实际的终端的设定)        
+" Vim 在与屏幕/键盘交互时使用的编码(取决于实际的终端的设定)
 set encoding=utf-8
 set langmenu=zh_CN.UTF-8
 
@@ -47,7 +47,8 @@ set noexpandtab  " 不转成空格
 " autocmd FIletype json,xml,c,cpp,h,vim,conf,bind,gitcommit setlocal tabstop=8 softtabstop=8 shiftwidth=8 noexpandtab
 autocmd FIletype dtsi,dts,gitcommit setlocal tabstop=2 softtabstop=2 shiftwidth=2 noexpandtab
 autocmd FIletype sh,mk,make setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab  " for google project
-autocmd FIletype json,xml,c,cpp,h setlocal tabstop=8 softtabstop=8 shiftwidth=8 noexpandtab
+autocmd FIletype c,h setlocal tabstop=8 softtabstop=8 shiftwidth=8 noexpandtab
+autocmd FIletype json,xml,cpp setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 
 " 设置更改当前文件的 Tab 键宽度的快捷键
 nnoremap <leader>ct :call SetTabWidth()<CR>
@@ -66,6 +67,7 @@ function! SetTabWidth()
 	execute 'set shiftwidth=' . tab_width
 
 	if expand
+		execute 'set expandtab'
 		echo "\t已将 Tab 键宽度设置为 " . tab_width . "，expandtab"
 	else
 		execute 'set noexpandtab'
@@ -90,10 +92,11 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'mhinz/vim-startify'   " 输入 vim 显示图案好看
 Plugin 'tomasr/molokai'
 Plugin 'flazz/vim-colorschemes'
+Plugin 'neoclide/coc.nvim'
 "异步安装
-Plugin 'vim-scripts/fzf-master', { 'do': { -> fzf#install() } }
+"Plugin 'vim-scripts/fzf-master', { 'do': { -> fzf#install() } }
 ""fzf异步模糊查找插件
-Plugin 'vim-scripts/fzf.vim-master'
+"Plugin 'vim-scripts/fzf.vim-master'
 call vundle#end()
 filetype plugin indent on
 
@@ -162,7 +165,7 @@ let g:rehash256 = 1
 colorscheme gruvbox
 " 解决 git commit 注释信息看不清问题
 autocmd BufRead COMMIT_EDITMSG,HEAD,FETCH_HEAD,config colorscheme evening
-  
+
 "gtags.vim 设置项
 let GtagsCscope_Auto_Load = 1
 let CtagsCscope_Auto_Map = 1
@@ -177,7 +180,7 @@ if filereadable(".tags")
 endif
 
 if filereadable("cscope.out")
-	cs add cscope.out  
+	cs add cscope.out
 endif
 
 if has("cscope")
@@ -187,7 +190,7 @@ if has("cscope")
 	set cst "始终同时查找cscope数据库和tags文件
 endif
 
-set cscopetag " 使用 cscope 作为 tags 命令,  Enable 'CTRL-]' shortcuts 
+set cscopetag " 使用 cscope 作为 tags 命令,  Enable 'CTRL-]' shortcuts
 
 set cscopeprg=gtags-cscope
 cs add GTAGS
@@ -202,53 +205,68 @@ nmap ccd :cs find d <C-R>=expand("<cword>")<CR><CR>
 " Find reference    :cs find 3 or c
 nmap ccc :cs find c <C-R>=expand("<cword>")<CR><CR>
 
-" YouCompleteMe
-" 增加一些补全的机制
-" 参考： https://zhuanlan.zhihu.com/p/33046090
-let g:ycm_semantic_triggers =  {
-			\ 'c,cpp,python,java,go,erlang,perl': ['re!\w{2}'],
-			\ 'cs,lua,javascript': ['re!\w{2}'],
-			\ }
+"" YouCompleteMe
+let g:loaded_youcompleteme = 1
+"" 增加一些补全的机制
+"" 参考： https://zhuanlan.zhihu.com/p/33046090
+"let g:ycm_semantic_triggers =  {
+"			\ 'c,cpp,python,java,go,erlang,perl': ['re!\w{2}'],
+"			\ 'cs,lua,javascript': ['re!\w{2}'],
+"			\ }
+"
+"" 添加白名单，只有这些文件才会去分析
+"let g:ycm_filetype_whitelist = {
+"			\ "c":1,
+"			\ "cpp":1,
+"			\ "objc":1,
+"			\ "py":1,
+"			\ "sh":0,
+"			\ "zsh":0,
+"			\ "zimbu":0,
+"			\ }
+"
+"" 临时关闭 YouCompleteMe
+""let g:ycm_global_ycm_extra_conf = 1
+"" 关闭悬浮提示窗口
+"let g:ycm_hover_disable_while_typing = 1
+"
+"" 输入两个字符就开始提示补全
+"let g:ycm_min_num_identifier_candidate_chars = 2
+"
+"" 设置为 0 时，函数或变量的预览窗口不会包含在自动补全菜单中，只显示补全项的名称
+"let g:ycm_add_preview_to_completeopt = 0
+"
+"" 关闭显示诊断信息，语言标注出来你代码问题
+""let g:ycm_show_diagnostics_ui = 1
+""let g:ycm_autoclose_preview_window_after_insertion = 1
+"
+"" 补全后自动关闭预览窗口
+"let g:ycm_autoclose_preview_window_after_completion = 1
+"let g:ycm_min_num_of_chars_for_completion=2  " set autocompletion - min-word
+"
+""注释和字符串中的文字也会被收入补全
+"let g:ycm_collect_identifiers_from_comments_and_strings = 1
+"
+"" 语法高亮
+""let g:ycm_enable_semantic_highlighting=1"
+"
+"" menu 表示在自动补全时显示菜单，方便您选择补全项
+"" menuone 表示当只有一个补全项时，也显示菜单，以便查看补全项的详情
+"set completeopt=menu,menuone
 
-" 添加白名单，只有这些文件才会去分析
-let g:ycm_filetype_whitelist = {
-			\ "c":1,
-			\ "cpp":1,
-			\ "objc":1,
-			\ "py":1,
-			\ "sh":0,
-			\ "zsh":0,
-			\ "zimbu":0,
-			\ }
-
-" 临时关闭 YouCompleteMe
-"let g:ycm_global_ycm_extra_conf = 1
-" 关闭悬浮提示窗口
-let g:ycm_hover_disable_while_typing = 1
-
-" 输入两个字符就开始提示补全
-let g:ycm_min_num_identifier_candidate_chars = 2
-
-" 设置为 0 时，函数或变量的预览窗口不会包含在自动补全菜单中，只显示补全项的名称
-let g:ycm_add_preview_to_completeopt = 0
-
-" 关闭显示诊断信息，语言标注出来你代码问题
-"let g:ycm_show_diagnostics_ui = 1
-"let g:ycm_autoclose_preview_window_after_insertion = 1
-
-" 补全后自动关闭预览窗口
-let g:ycm_autoclose_preview_window_after_completion = 1
-let g:ycm_min_num_of_chars_for_completion=2  " set autocompletion - min-word
-
-"注释和字符串中的文字也会被收入补全
-let g:ycm_collect_identifiers_from_comments_and_strings = 1
-
-" 语法高亮
-"let g:ycm_enable_semantic_highlighting=1"
-
-" menu 表示在自动补全时显示菜单，方便您选择补全项
-" menuone 表示当只有一个补全项时，也显示菜单，以便查看补全项的详情
-set completeopt=menu,menuone
+" coc
+let g:coc_disable_startup_warning = 1
+" For coc-nvim, it can't use pumvisible, and it will cause some side effect.
+"  More details: please visit
+"  https://github.com/neoclide/coc.nvim/wiki/Completion-with-sources
+"  "" wiki: https://github.com/neoclide/coc.nvim/wiki
+"
+"" <Enter>         : final select
+" <Tab>           : select next
+"  <"Shift> + <Tab> : Select prev
+inoremap <expr> <cr> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
+inoremap <expr> <Tab> coc#pum#visible() ? coc#pum#next(1) : "\<Tab>"
+inoremap <expr> <S-Tab> coc#pum#visible() ? coc#pum#prev(1) : "\<S-Tab>"
 
 
 """"""""""""""""
@@ -259,3 +277,7 @@ set noic
 
 " 防止上面的 autocmd 切换工作目录
 execute 'cd ' . g:original_cwd
+
+"行尾空格高亮
+highlight extraSpace ctermbg=red guibg=red  "定义高亮组extraSpace
+match extraSpace /\v\s+$/ " 匹配行尾空格

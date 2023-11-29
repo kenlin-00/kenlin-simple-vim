@@ -12,7 +12,7 @@ directory="${HOME}/temp"
 if [ ! -d "$directory" ]; then
 	mkdir "$directory"
 fi
-find ./ -name "*.h" -o -name "*.c" -o -name "*.cpp" > ${directory}/gtags.files
+find ./ -name "*.h" -o -name "*.c" -o -name "*.cpp" -o -name "*.cc" -o -name "*.cxx" > ${directory}/gtags.files
 
 # 创建gtags索引
 echo "gtags -f ${directory}/gtags.files"
