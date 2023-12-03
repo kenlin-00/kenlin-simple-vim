@@ -75,14 +75,13 @@ function! SetTabWidth()
 	endif
 endfunction
 
-set nocompatible
-filetype off
+set nocompatible              " 去除VI一致性,必须要添加
+filetype off                  " 必须要添加
 
 " Vundle 插件管理器设置
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 " 在此处添加您需要安装的插件
-" Plugin '插件名称'
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'ycm-core/YouCompleteMe'
 Plugin 'majutsushi/tagbar'
@@ -90,7 +89,6 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'mhinz/vim-startify'   " 输入 vim 显示图案好看
-Plugin 'tomasr/molokai'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'neoclide/coc.nvim'
 "异步安装
@@ -100,6 +98,9 @@ Plugin 'neoclide/coc.nvim'
 call vundle#end()
 filetype plugin indent on
 
+" 忽视插件改变缩进,可以使用以下替代
+" filetype plugin on
+
 " 不使用任何插件管理的插件
 set runtimepath^=~/.vim/bundle/ag
 
@@ -108,8 +109,9 @@ nmap ag :Ag -w <C-R>=expand("<cword>")<CR><CR>   "Ag 查找当成层级
 
 " tagbar 显示函数名和变量
 let g:tagbar_ctags_bin='/usr/bin/ctags'          "ctags程序的路径
-let g:tagbar_left=1 "显示在左边
+let g:tagbar_position = 'left'
 let g:tagbar_width=30                  "窗口宽度的设置
+
 " 1 开启自动预览(随着光标在标签上的移动，顶部会出现一个实时的预览窗口)
 let g:tagbar_autopreview = 0
 let g:tagbar_autofocus = 0  " 光标在文件内
@@ -156,9 +158,9 @@ let g:airline_theme='google_dark'
 
 "molokai 主题
 "colorscheme molokai "设置颜色主题"
-set t_Co=256 "设置256色彩"
+set t_Co=256 "设置256色彩
 set background=dark
-let g:molokai_original=1
+"let g:molokai_original=1
 let g:rehash256 = 1
 " colorschemes
 " 默认主题
@@ -255,7 +257,7 @@ let g:loaded_youcompleteme = 1
 "set completeopt=menu,menuone
 
 " coc
-let g:coc_disable_startup_warning = 1
+let g:coc_disable_startup_warning = 0
 " For coc-nvim, it can't use pumvisible, and it will cause some side effect.
 "  More details: please visit
 "  https://github.com/neoclide/coc.nvim/wiki/Completion-with-sources
@@ -267,6 +269,8 @@ let g:coc_disable_startup_warning = 1
 inoremap <expr> <cr> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
 inoremap <expr> <Tab> coc#pum#visible() ? coc#pum#next(1) : "\<Tab>"
 inoremap <expr> <S-Tab> coc#pum#visible() ? coc#pum#prev(1) : "\<S-Tab>"
+
+set pumheight=12  " 补全菜单太长
 
 """"""""""""""""
 " 搜索忽略大小写
