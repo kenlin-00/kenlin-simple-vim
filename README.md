@@ -6,7 +6,6 @@
 
 ```sh
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'ycm-core/YouCompleteMe'
 Plugin 'majutsushi/tagbar'
 Plugin 'scrooloose/nerdtree'
 Plugin 'vim-airline/vim-airline'
@@ -66,7 +65,6 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 " 在此处添加您需要安装的插件
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'ycm-core/YouCompleteMe'
 Plugin 'majutsushi/tagbar'
 Plugin 'scrooloose/nerdtree'
 Plugin 'vim-airline/vim-airline'
@@ -78,7 +76,7 @@ Plugin 'neoclide/coc.nvim'
 call vundle#end()
 filetype plugin indent on
 
-" 忽视插件改变缩进,可以使用以下替代
+" 忽视插件改变缩进,可以使用以下配置
 " filetype plugin on
 
 " 常用的命令
@@ -105,7 +103,7 @@ ag -A xxxxx     			搜索显示行号
 ag -B 2 "root" /etc/passwd  并显示匹配内容之前的n行文本
 ag -C 2 PATTERN			搜索含PATTERN文本，并同时显示匹配内容以及它前后各n行文本的内容。
 ag -w PATTERN			 全匹配搜索，只搜索与所搜内容完全匹配的文本。
-ag --ignore-dir /etc/ "kendall"  	忽略某些文件目录进行搜索。
+ag --ignore-dir /etc/ "kenlin"  	忽略某些文件目录进行搜索。
 ```
 
 命令使用参考 ：https://blog.csdn.net/weixin_39789796/article/details/117462856
@@ -317,7 +315,7 @@ ctags -R --languages=c,c++ /path/to/folder1 /path/to/folder2
 
 #### global
 
-》 详情： [主页](https://www.gnu.org/software/global/)
+> 详情： [主页](https://www.gnu.org/software/global/)
 
 ```
 # - 下载
@@ -398,7 +396,12 @@ Coc 默认安装在$HOME `.vim/bundle/` 路径下
 如果服务器没安装 yarn, 且无管理员权限，可以安装在本地
 
 ```sh
+# - 编译 (NodeJs > v16.17)
+# 下载编译安装 nodejs 最后将其加入环境变量即可 -- 自己网络搜索安装
 sudo apt install nodejs
+
+# - 下载
+git clone https://github.com/neoclide/coc.nvim $HOME/.vim/bundle/coc.nvim
 
 # 安装 yarn
 cd $HOME/.vim/bundle/coc.nvim
@@ -413,19 +416,11 @@ yarn config set ignore-engines true
 ./node_modules/yarn/bin/yarn config set registry 'https://registry.npm.taobao.org'
 # 还原回去
 ./node_modules/yarn/bin/yarn config set registry 'https://registry.yarnpkg.com'
+# 再重新 yarn install ; yarn build
 
-# - 下载
-git clone https://github.com/neoclide/coc.nvim $HOME/.vim/bundle/coc.nvim
-
-# - 编译 (NodeJs > v16.17)
-# 下载编译安装 nodejs 最后将其加入环境变量即可 -- 自己网络搜索安装
-
-# ubunut 测试机中压缩包 vim-package.tar.gz 和 coc-config.tar.gz 已经包含全部文件
-
-node -v
-cd $HOME/.vim/bundle/coc.nvim && yarn install && yarn build
 
 # - 打开VIM, 输入以下命令, 安装 Coc 插件.
+# C++ 提示插件
 $ :CocInstall coc-clangd coc-vimlsp
 :CocCommand clangd.install
 
@@ -453,7 +448,7 @@ pip3 install python-language-server[all]
 - 配置
 
 ```
-let g:coc_disable_startup_warning = 0  " 代开
+let g:coc_disable_startup_warning = 0  " 打开
 " For coc-nvim, it can't use pumvisible, and it will cause some side effect.
 "  More details: please visit
 "  https://github.com/neoclide/coc.nvim/wiki/Completion-with-sources
@@ -496,7 +491,7 @@ endfunction
 - 其他的可以参考我的 vimrc : https://github.com/kenlin-00/kendall-simple-vim/blob/master/vimrc
 
 
-## 部分快捷键 和 使用方法
+## 使用 simple-vim
 
 - 备份和新增 vimrc 配置
 
@@ -506,16 +501,13 @@ endfunction
 mv ~/.vim ~/vim-bak
 mv ~/.vimrc ~/vimrc-bak
 
-mkdir ${HOME}/simple-vim/
-# 下载和并存 vimrc 和 vim 在 ${HOME}/simple-vim/
-
 ln -s ~/simple-vim/vim ~/.vim
 ln -s ~/simple-vim/vimrc ~/.vimrc
 ```
 
 - 通过 Vundle 下载插件
 
-建议翻墙再下载，或者直接从我这拷贝已经下载好的插件 (`shegnken.lin@amlogic.com`)
+建议翻墙再下载，或者直接从我这拷贝已经下载好的插件
 
 ```sh
 vim
@@ -523,33 +515,8 @@ vim
 :PluginList  # 列出所有插件
 ```
 
-![](https://cdn.staticaly.com/gh/kendall-cpp/blogPic@main/blog-01/image.3r29mtbsf8a0.webp)
-
 - 一切准备就绪后可以使用 run-gtags.sh 在 your-project-source-core 下生成索引文件
 
-## run-gtags.sh
-
-```sh
-#!/bin/bash
-
-current_path=$(pwd)
-cd ${current_path}
-
-# 查找文件并将结果输出到 gtags.files
-directory="${HOME}/temp"
-if [ ! -d "$directory" ]; then
-	mkdir "$directory"
-fi
-find ./ -name "*.h" -o -name "*.c" -o -name "*.cpp" > ${directory}/gtags.files
-
-# 创建gtags索引
-echo "gtags -f ${directory}/gtags.files &"
-gtags -f ${directory}/gtags.files
-
-# 创建ctags索引
-echo "ctags -R &"
-ctags -R &
-```
 
 ## vimrc
 
@@ -559,23 +526,49 @@ ctags -R &
 
 ## 快捷键汇总
 
-建议在项目最顶层目录使用 vim 打开文件， 否则 cscope 会失效。
+- 配置环境变量
+
+```sh
+export PATH=/mnt/nfsroot/xxxxxx/home/simple-vim/vim/global/bin:$PATH
+export PATH=/mnt/fileroot/xxxxxx/home/simple-vim:$PATH
+export PATH=/mnt/fileroot/xxxxxx/workspace/google_source/runall:$PATH
+export PATH=/mnt/nfsroot/xxxxxx/home/.config/coc/extensions/coc-clangd-data/install/17.0.3/clangd_17.0.3/bin:$PATH
+```
+
+- 必须安装 ctags
+
+```sh
+apt install ctags
+```
 
 ### cscope + ctags 跳转
 
-先执行 run-gtags
+首先进入项目根目录，比如打开的项目是 kernel, 就在 kernel 最顶层目录执行 run-gtags 生成索引文件
 
-然后可以使用 cscope 快捷键
+然后可以使用 gtags 快捷键
 
 - cs : 查看函数调用关系，**一般使用这个最多**
 - cg : 搜索字符
+- cc : 搜索被调用的地方
 - ctrl + ] 跳转到函数定义出
 - ctrl + t 返回 `ctrl + ]`
 - ctrl + o 返回上一处
 
+
 ### 是否自动切换到当前文件目录
 
-按 `'\'` 然后按 cd
+按 `'\'` 然后按 cd； 可以选择是否进入当前文件的路径。
+
+然后可以使用 ag 快捷键搜索光标当前所在字符，超级好用！！！
+
+#### 使用 Ag 搜索
+
+直接输入 ag , 在当前文件夹下搜索 光标所在处的字符。
+
+最后结合 `\ + cd` 快捷键使用，这样可以设置搜索的是当前文件的目录，还是搜索整个项目。
+
+- 按 q 可以退出
+
 
 ### 设置 tab 的空格数
 
@@ -586,23 +579,6 @@ ctags -R &
 - 例如输入： 8
 	- 表示 tab 设置为 8 ,且设置 expandtab（转成空格）
 
-### 语法补全
-
-默认是不开启 YouCompleteMe
-
-可以自行修改 vimrc 文件
-
-```
-"Plugin 'ycm-core/YouCompleteMe'    将这行的注释去掉掉即可
-```
-
-### 使用 Ag 搜索
-
-直接输入 ag , 在当前文件夹下搜索 光标所在处的字符。
-
-最后结合 `\ + cd` 快捷键使用，这样可以设置搜索的是当前文件的目录，还是整个项目。
-
-- 按 q 可以退出
 
 ### 打开文件目录列表窗口
 
@@ -610,6 +586,21 @@ ctrl + b
 
 使用 ctrl + w + 方向键 切换窗口（这是 vim 的快捷键，具体自己网络搜索）
 
+- 使用 回车键 打开文件
+- 也可以使用 t 打开文件, 然后使用 gt 切换（感觉不实用）
+
 ### 打开函数和变量目录列表窗口
 
 ctrl + n
+
+###  其他
+
+```sh
+vim -O filt1.txt file2.txt  # 左右窗口打开两个文件
+vim -o filt1.txt file2.txt  # 上下窗口打开两个文件
+ctrl + w + w  或者  ctrl + w + 方向键 切换窗口
+
+ctrl + # 先上搜索
+ctrl + * 向下搜索
+也可以按 n 或者 N 上下搜索
+```
