@@ -325,7 +325,7 @@ $ wget -O - https://ftp.gnu.org/pub/gnu/global/global-6.6.9.tar.gz | tar xzf - -
 # - 编译
 $ cd $HOME/.vim/bundle/global-6.6.9 && chmod 777 ./configure && ./configure > /dev/null && make -j8 > /dev/null
 
-# - 安装
+# - 安装(可忽略)
 $ cd $HOME/.vim/bundle/global-6.6.9 && mkdir -p plugin && cp gtags.vim gtags-cscope.vim plugin
 $ cd $HOME/.vim/bundle/global-6.6.9 && ls $HOME/bin && \
   ln -s  $PWD/global/global $HOME/bin/global && \
