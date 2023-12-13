@@ -602,8 +602,7 @@ ctrl + w + w  或者  ctrl + w + 方向键 切换窗口
 
 ctrl + # 先上搜索
 ctrl + * 向下搜索
+也可以按 n 或者 N 上下搜索
 
 vim -t <函数名> 可以直接打开并跳到该函数位置，例如 vim -t OnUsbAudioUevent
-
-也可以按 n 或者 N 上下搜索
 ```
