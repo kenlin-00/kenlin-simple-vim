@@ -664,4 +664,10 @@ ctrl + * 向下搜索
 也可以按 n 或者 N 上下搜索
 
 vim -t <函数名> 可以直接打开并跳到该函数位置，例如 vim -t OnUsbAudioUevent
+
+手动粘贴时格式不会乱，先打开粘贴模式，再粘贴
+:set paste
+
+查看当前文件 tab 大小,最后通过上面 ct 快捷键来设置
+:set tabstop
 ```
