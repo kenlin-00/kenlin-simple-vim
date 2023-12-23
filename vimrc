@@ -2,6 +2,8 @@
 " https://github.com/kendall-cpp/kendall-simple-vim
 " config for vim
 
+set backspace=indent,eol,start
+
 " Vim 在与屏幕/键盘交互时使用的编码(取决于实际的终端的设定)
 set encoding=utf-8
 set langmenu=zh_CN.UTF-8
