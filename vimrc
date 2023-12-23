@@ -48,7 +48,7 @@ set noexpandtab  " 不转成空格
 autocmd FIletype dtsi,dts,gitcommit setlocal tabstop=2 softtabstop=2 shiftwidth=2 noexpandtab
 autocmd FIletype sh,mk,make setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab  " for google project
 autocmd FIletype c,h setlocal tabstop=8 softtabstop=8 shiftwidth=8 noexpandtab
-autocmd FIletype json,xml,cpp setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
+autocmd FIletype json,xml,cc,cpp setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 
 " 设置更改当前文件的 Tab 键宽度的快捷键
 nnoremap <leader>ct :call SetTabWidth()<CR>

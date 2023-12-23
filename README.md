@@ -531,7 +531,6 @@ vim
 ```sh
 export PATH=/mnt/nfsroot/xxxxxx/home/simple-vim/vim/global/bin:$PATH
 export PATH=/mnt/fileroot/xxxxxx/home/simple-vim:$PATH
-export PATH=/mnt/fileroot/xxxxxx/workspace/google_source/runall:$PATH
 export PATH=/mnt/nfsroot/xxxxxx/home/.config/coc/extensions/coc-clangd-data/install/17.0.3/clangd_17.0.3/bin:$PATH
 ```
 
