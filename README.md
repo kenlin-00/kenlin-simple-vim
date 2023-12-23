@@ -491,6 +491,66 @@ endfunction
 - 其他的可以参考我的 vimrc : https://github.com/kenlin-00/kendall-simple-vim/blob/master/vimrc
 
 
+## 重新安装 vim
+
+### 手动编译安装（推荐）
+
+- 安装libncurses5-dev，否则编译时会报no terminal library found错误：
+
+```sh
+sudo apt install libncurses5-dev
+```
+
+- 由于这里要添加python支持，所以要装python3-dev(或者python-dev，对于python2用户)，否则编译时报Python.h: No such file or directory错误：
+
+如果没有 python3
+
+```sh
+sudo apt-get install python3-dev
+```
+
+- 克隆Vim源代码，并进入目录
+
+```sh
+# 这个连接可能不能访问了
+git clone https://github.com/vim/vim
+```
+
+```sh
+wget https://ftp.nluug.nl/pub/vim/unix/vim-9.0.tar.bz2
+
+tar -xjf  vim-9.0.tar.bz2
+
+cd vim90
+ ```
+
+- 编译
+
+```sh
+# 自己修改输出路径
+./configure --with-features=huge --prefix=$HOME/simple-vim/vim-new/ --enable-gui=gtk3 --with-tlib=ncursesw
+
+# –with-features=huge：支持最大特性
+# –enable-rubyinterp：打开对ruby编写的插件的支持
+# –enable-pythoninterp：打开对python编写的插件的支持
+# –enable-python3interp：打开对python3编写的插件的支持
+# –enable-luainterp：打开对lua编写的插件的支持
+# –enable-perlinterp：打开对perl编写的插件的支持
+# –enable-multibyte：打开多字节支持，可以在Vim中输入中文
+# –enable-cscope：打开对cscope的支持
+# –with-python-config-dir=/usr/lib/python2.7/config-x86_64-linux-gnu/ 指定python config路径
+# –with-python-config-dir=/usr/lib/python3.5/config-3.5m-x86_64-linux-gnu/ 指定python3 config路径(根据自己系统实际情况配置)
+# –prefix=/usr：指定将要安装到的路径(可自行创建)
+# –enable-gui：GUI支持，可用auto、gtk2或者gnome
+
+make -j4
+make install
+```
+
+### 使用 apt 安装
+
+或者 sudo apt upgrade vim
+
 ## 使用 simple-vim
 
 - 备份和新增 vimrc 配置
