@@ -489,6 +489,9 @@ call vundle#begin()
 Plugin 'Yggdroot/LeaderF' "LeaderF模糊查找插件
 call vundle#end()
 filetype plugin indent on
+
+然后下载 LeaderF
+:PluginInstall
 ```
 
 - 快捷键
@@ -509,7 +512,24 @@ filetype plugin indent on
 <C-Down> : 在预览popup窗口里滚动向下
 ```
 
-参考：https://retzzz.github.io/dc9af5aa/
+- 如果报错
+
+```
+LeaderF requires Vim compiled with python and/or a compatible python version.
+```
+
+检查你的 python 版本，建议使用 python3
+
+然后检查你 vim 是否支持 Python
+
+```
+vim --version | grep +python
+
+如果不支持，建议重新编译 vim
+./configure --with-features=huge --prefix=$HOME/simple-vim/vim-9.0/ --enable-gui=gtk3 --with-tlib=ncursesw --enable-pythoninterp=yes  --enable-python3interp=yes
+```
+
+> 参考：https://retzzz.github.io/dc9af5aa/
 
 ## 其他配置
 
@@ -574,7 +594,7 @@ cd vim90
 
 ```sh
 # 自己修改输出路径
-./configure --with-features=huge --prefix=$HOME/simple-vim/vim-new/ --enable-gui=gtk3 --with-tlib=ncursesw
+./configure --with-features=huge --prefix=$HOME/simple-vim/vim-9.0/ --enable-gui=gtk3 --with-tlib=ncursesw --enable-pythoninterp=yes  --enable-python3interp=yes
 
 # –with-features=huge：支持最大特性
 # –enable-rubyinterp：打开对ruby编写的插件的支持
