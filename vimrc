@@ -279,7 +279,7 @@ let g:Lf_DefaultExternalTool='rg'  " 设置用第三方工具查找 这个选项
 let g:Lf_ShortcutF = '<c-p>'
 let g:Lf_StlSeparator = { 'left': '', 'right': '', 'font': '' }
 " 设置项目根目录
-let g:Lf_RootMarkers = ['.git', '.svn', '.hg', '.project', '.root', 'tags']
+let g:Lf_RootMarkers = ['.git', '.svn', '.hg', '.project', '.root', 'tags', 'GTAGS']
 " 设置查找规则
 let g:Lf_WorkingDirectoryMode = 'AF'
 let g:Lf_WindowHeight = 0.30
