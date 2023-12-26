@@ -2,6 +2,7 @@
 " https://github.com/kendall-cpp/kendall-simple-vim
 " config for vim
 
+" 解决 无法删除问题
 set backspace=indent,eol,start
 
 " Vim 在与屏幕/键盘交互时使用的编码(取决于实际的终端的设定)
@@ -93,10 +94,7 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'mhinz/vim-startify'   " 输入 vim 显示图案好看
 Plugin 'flazz/vim-colorschemes'
 Plugin 'neoclide/coc.nvim'
-"异步安装
-"Plugin 'vim-scripts/fzf-master', { 'do': { -> fzf#install() } }
-""fzf异步模糊查找插件
-"Plugin 'vim-scripts/fzf.vim-master'
+Plugin 'Yggdroot/LeaderF' "LeaderF模糊查找插件
 call vundle#end()
 filetype plugin indent on
 
@@ -273,6 +271,39 @@ inoremap <expr> <Tab> coc#pum#visible() ? coc#pum#next(1) : "\<Tab>"
 inoremap <expr> <S-Tab> coc#pum#visible() ? coc#pum#prev(1) : "\<S-Tab>"
 
 set pumheight=12  " 补全菜单太长
+
+"LeaderF 模糊文件查找配置
+let g:Lf_UseVersionControlTool=1 "这个是默认选项, 可以不写
+let g:Lf_DefaultExternalTool='rg'  " 设置用第三方工具查找 这个选项可以是'rg', 'pt', 'ag', 'find'之一, 顺序代表优先级
+" 件快速搜索 快捷键
+let g:Lf_ShortcutF = '<c-p>'
+let g:Lf_StlSeparator = { 'left': '', 'right': '', 'font': '' }
+" 设置项目根目录
+let g:Lf_RootMarkers = ['.git', '.svn', '.hg', '.project', '.root']
+" 设置查找规则
+let g:Lf_WorkingDirectoryMode = 'AF'
+let g:Lf_WindowHeight = 0.30
+let g:Lf_CacheDirectory = expand('~/.vim/cache')
+let g:Lf_ShowRelativePath = 0
+let g:Lf_HideHelp = 1
+let g:Lf_StlColorscheme = 'powerline'
+let g:Lf_PreviewResult = {'Function':0, 'BufTag':0}
+" 不显示隐藏文件
+let g:Lf_ShowHidden = 0
+let g:Lf_PreviewInPopup = 1  " 预览弹出窗口显示而不是在原来的窗口
+let g:Lf_PreviewHorizontalPosition = 'right'
+
+" 窗口弹出
+let g:Lf_WindowPosition = 'popup'
+let g:Lf_WindowHeight = 0.30
+let g:Lf_IgnoreCase = 0 " 不忽略大小写
+
+" 控制 LeaderF 记住的搜索历史的数量, 上下键可以查看
+let g:Lf_HistoryNumber = 5
+
+
+
+
 
 """"""""""""""""
 " 搜索忽略大小写
