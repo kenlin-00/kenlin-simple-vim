@@ -29,7 +29,7 @@ if [[ -e "run-ctags.sh" ]]; then
 else
   # 创建ctags索引
   echo "ctags -R --fields=+iaS --extras=+q * --languages=c,c++"
-  ctags -R --fields=+iaS --extras=+q * --languages=c,c++;
+  ctags -R --fields=+iaS --languages=c,c++;
 
   # 删除查找多余的 EXPORT_SYMBOL
   # 指定tags文件路径
