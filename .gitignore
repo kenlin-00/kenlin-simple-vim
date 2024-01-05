@@ -1,156 +1,158 @@
+
+ NOTE! Don't add files that are generated in specific
+ subdirectories here. Add them in the ".gitignore" file
+ in that subdirectory instead.
+
+ NOTE! Please use 'git ls-files -i --exclude-standard'
+ command after changing this file, to see if there are
+ any tracked files which get ignored after the change.
+
+ Normal rules (sorted alphabetically)
+
+.*
+*.a
+*.asn1.[ch]
+*.bin
+*.bz2
+*.c.[012]*.*
+*.dt.yaml
+*.dtb
+*.dtb.S
+*.dwo
+*.elf
+*.gcno
+*.gz
+*.i
+*.ko
+*.lex.c
+*.ll
+*.lst
+*.lz4
+*.lzma
+*.lzo
+*.mod
+*.mod.c
+*.ns_deps
+*.o
+*.o.*
+*.patch
+*.s
+*.so
+*.so.dbg
+*.su
+*.symtypes
+*.tab.[ch]
+*.tar
+*.xz
+Module.symvers
+modules.builtin
+modules.order
+
 #
-# NOTE! Don't add files that are generated in specific
-# subdirectories here. Add them in the ".gitignore" file
-# in that subdirectory instead.
+# Top-level generic files
 #
-# NOTE! Please use 'git ls-files -i --exclude-standard'
-# command after changing this file, to see if there are
-# any tracked files which get ignored after the change.
+/tags
+/TAGS
+/linux
+/vmlinux
+/vmlinux.32
+/vmlinux-gdb.py
+/vmlinuz
+/System.map
+/Module.markers
+/modules.builtin.modinfo
+
+/customer
+
 #
-# Normal rules (sorted alphabetically)
+# RPM spec file (make rpm-pkg)
 #
-#.*
-#*.a
-#*.asn1.[ch]
-#*.bin
-#*.bz2
-#*.c.[012]*.*
-#*.dt.yaml
-#*.dtb
-#*.dtb.S
-#*.dwo
-#*.elf
-#*.gcno
-#*.gz
-#*.i
-#*.ko
-#*.lex.c
-#*.ll
-#*.lst
-#*.lz4
-#*.lzma
-#*.lzo
-#*.mod
-#*.mod.c
-#*.ns_deps
-#*.o
-#*.o.*
-#*.patch
-#*.s
-#*.so
-#*.so.dbg
-#*.su
-#*.symtypes
-#*.tab.[ch]
-#*.tar
-#*.xz
-#Module.symvers
-#modules.builtin
-#modules.order
+/*.spec
+
 #
-##
-## Top-level generic files
-##
-#/tags
-#/TAGS
-#/linux
-#/vmlinux
-#/vmlinux.32
-#/vmlinux-gdb.py
-#/vmlinuz
-#/System.map
-#/Module.markers
-#/modules.builtin.modinfo
+# Debian directory (make deb-pkg)
 #
-#/customer
+/debian/
+
 #
-##
-## RPM spec file (make rpm-pkg)
-##
-#/*.spec
+# Snap directory (make snap-pkg)
 #
-##
-## Debian directory (make deb-pkg)
-##
-#/debian/
+/snap/
+
 #
-##
-## Snap directory (make snap-pkg)
-##
-#/snap/
+# tar directory (make tar*-pkg)
 #
-##
-## tar directory (make tar*-pkg)
-##
-#/tar-install/
+/tar-install/
+
 #
-##
-## We don't want to ignore the following even if they are dot-files
-##
-#!.clang-format
-#!.cocciconfig
-#!.get_maintainer.ignore
-#!.gitattributes
-#!.gitignore
-#!.mailmap
+# We don't want to ignore the following even if they are dot-files
 #
-##
-## Generated include files
-##
-#/include/config/
-#/include/generated/
-#/include/ksym/
-#/arch/*/include/generated/
+!.clang-format
+!.cocciconfig
+!.get_maintainer.ignore
+!.gitattributes
+!.gitignore
+!.mailmap
+
 #
-## stgit generated dirs
-#patches-*
+# Generated include files
 #
-## quilt's files
-#patches
-#series
+/include/config/
+/include/generated/
+/include/ksym/
+/arch/*/include/generated/
+
+# stgit generated dirs
+patches-*
+
+# quilt's files
+patches
+series
+
+# cscope files
+cscope.*
+ncscope.*
+
+# gnu global files
+GPATH
+GRTAGS
+GSYMS
+GTAGS
+
+# id-utils files
+ID
+
+*.orig
+*~
+\#*#
+
 #
-## cscope files
-#cscope.*
-#ncscope.*
+# Leavings from module signing
 #
-## gnu global files
-#GPATH
-#GRTAGS
-#GSYMS
-#GTAGS
-#
-## id-utils files
-#ID
-#
-#*.orig
-#*~
-#\#*#
-#
-##
-## Leavings from module signing
-##
-#extra_certificates
-#signing_key.pem
-#signing_key.priv
-#signing_key.x509
-#x509.genkey
-#
-## Kconfig presets
-#/all.config
-#/alldef.config
-#/allmod.config
-#/allno.config
-#/allrandom.config
-#/allyes.config
-#
-## Kdevelop4
-#*.kdev4
-#
-## Clang's compilation database file
-#/compile_commands.json
-#
-#*.symversions
+extra_certificates
+signing_key.pem
+signing_key.priv
+signing_key.x509
+x509.genkey
+
+# Kconfig presets
+/all.config
+/alldef.config
+/allmod.config
+/allno.config
+/allrandom.config
+/allyes.config
+
+# Kdevelop4
+*.kdev4
+
+# Clang's compilation database file
+/compile_commands.json
+
+*.symversions
 
 # ignore another git repository
 /vim/bundle/*
+/vim/node/*
+/vim-new/*
 
