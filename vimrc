@@ -301,8 +301,8 @@ let g:Lf_IgnoreCase = 0 " 不忽略大小写
 " 控制 LeaderF 记住的搜索历史的数量, 上下键可以查看
 let g:Lf_HistoryNumber = 5
 
-
-
+" 正则表达式查找 当前光标所在位置的字符串
+noremap <C-F> :<C-U><C-R>=printf("Leaderf! rg -e %s ", expand("<cword>"))<CR>
 
 
 """"""""""""""""
