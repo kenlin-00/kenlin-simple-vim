@@ -304,6 +304,9 @@ let g:Lf_HistoryNumber = 5
 " 正则表达式查找 当前光标所在位置的字符串
 noremap <C-F> :<C-U><C-R>=printf("Leaderf! rg -e %s ", expand("<cword>"))<CR>
 
+" Files you don't want LeaderF to record
+let g:Lf_MruFileExclude = ['*.so', '*.o', "*.ko", "*.out"]
+
 
 """"""""""""""""
 " 搜索忽略大小写
