@@ -49,7 +49,7 @@ set noexpandtab  " 不转成空格
 " kernel 建议增加下面几行配置  "expandtab 转成空格
 " autocmd FIletype json,xml,c,cpp,h,vim,conf,bind,gitcommit setlocal tabstop=8 softtabstop=8 shiftwidth=8 noexpandtab
 autocmd FIletype dtsi,dts,gitcommit setlocal tabstop=2 softtabstop=2 shiftwidth=2 noexpandtab
-autocmd FIletype sh,mk,make setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab  " for google project
+autocmd FIletype sh,mk,make setlocal tabstop=2 softtabstop=2 shiftwidth=2 noexpandtab  " for google project
 autocmd FIletype c,h setlocal tabstop=8 softtabstop=8 shiftwidth=8 noexpandtab
 autocmd FIletype json,xml,cc,cpp setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 
@@ -279,11 +279,13 @@ let g:Lf_DefaultExternalTool='rg'  " 设置用第三方工具查找 这个选项
 let g:Lf_ShortcutF = '<c-p>'
 let g:Lf_StlSeparator = { 'left': '', 'right': '', 'font': '' }
 " 设置项目根目录
+"let g:Lf_RootMarkers = ['tags', 'GTAGS']
 let g:Lf_RootMarkers = ['.git', '.svn', '.hg', '.project', '.root', 'tags', 'GTAGS']
 " 设置查找规则
 let g:Lf_WorkingDirectoryMode = 'AF'
 let g:Lf_WindowHeight = 0.30
 let g:Lf_CacheDirectory = expand('~/.vim/cache')
+let g:Lf_UseCache = 0 " 禁用缓存
 let g:Lf_ShowRelativePath = 1
 let g:Lf_HideHelp = 1
 let g:Lf_StlColorscheme = 'powerline'
@@ -320,3 +322,6 @@ execute 'cd ' . g:original_cwd
 "行尾空格高亮
 highlight extraSpace ctermbg=red guibg=red  "定义高亮组extraSpace
 match extraSpace /\v\s+$/ " 匹配行尾空格
+
+" 禁止产生.swp 文件
+set noswapfile
