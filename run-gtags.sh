@@ -7,6 +7,30 @@
 current_path=$(pwd)
 cd ${current_path}
 
+clean_tags_files() {
+	if [[ $1 == "clean" ]]; then
+		echo "clean GRTAGS GTAGS GPATH tags..."
+		if [[ -f GPATH ]]; then
+			rm GPATH
+		fi
+		if [[ -f GRTAGS ]]; then
+			rm GRTAGS
+		fi
+		if [[ -f GTAGS ]]; then
+			rm GTAGS
+		fi
+
+		if [[ -f tags ]]; then
+			rm tags
+		fi
+	fi
+}
+
+if [[ $1 == "clean" ]]; then
+	clean_tags_files $1
+	exit 0
+fi
+
 # 查找文件并将结果输出到 gtags.files
 directory="${HOME}/temp"
 if [ ! -d "$directory" ]; then
