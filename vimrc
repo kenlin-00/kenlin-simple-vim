@@ -49,9 +49,10 @@ set noexpandtab  " 不转成空格
 " kernel 建议增加下面几行配置  "expandtab 转成空格
 " autocmd FIletype json,xml,c,cpp,h,vim,conf,bind,gitcommit setlocal tabstop=8 softtabstop=8 shiftwidth=8 noexpandtab
 autocmd FIletype dtsi,dts,gitcommit setlocal tabstop=2 softtabstop=2 shiftwidth=2 noexpandtab
-autocmd FIletype sh,mk,make setlocal tabstop=2 softtabstop=2 shiftwidth=2 noexpandtab  " for google project
 autocmd FIletype c,h setlocal tabstop=8 softtabstop=8 shiftwidth=8 noexpandtab
-autocmd FIletype json,xml,cc,cpp setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
+autocmd FIletype xml,cc,cpp setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
+autocmd FIletype sh,mk,make setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab  " for google project
+autocmd FIletype py,json setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 
 " 设置更改当前文件的 Tab 键宽度的快捷键
 nnoremap <leader>ct :call SetTabWidth()<CR>
@@ -307,7 +308,7 @@ let g:Lf_HistoryNumber = 5
 noremap <C-F> :<C-U><C-R>=printf("Leaderf! rg -e %s ", expand("<cword>"))<CR>
 
 " Files you don't want LeaderF to record
-let g:Lf_MruFileExclude = ['*.so', '*.o', "*.ko", "*.out"]
+let g:Lf_MruFileExclude = ['*.so', '*.o', "*.ko", "*.out", "tags"]
 
 
 """"""""""""""""
@@ -325,3 +326,5 @@ match extraSpace /\v\s+$/ " 匹配行尾空格
 
 " 禁止产生.swp 文件
 set noswapfile
+set autoread  " 实时加载最新的文件，如果在其他地方修改
+

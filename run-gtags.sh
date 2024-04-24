@@ -41,6 +41,7 @@ fi
 # 创建gtags索引
 #echo "gtags -f ${directory}/gtags.files"
 #gtags -f ${directory}/gtags.files &
+echo "gtags &"
 gtags  &
 
 kernel=$1
