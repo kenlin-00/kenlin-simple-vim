@@ -464,6 +464,19 @@ inoremap <expr> <S-Tab> coc#pum#visible() ? coc#pum#prev(1) : "\<S-Tab>"
 set pumheight=12  " 补全菜单太长
 ```
 
+- 关闭函数参数中变量名提示
+
+```
+:CocConfig
+
+输入
+{
+    "inlayHint.enable": false
+}
+```
+
+具体配置餐参考：build/index.js
+
 ## LeaderF 模糊搜索插件
 
 [Github](https://github.com/Yggdroot/LeaderF)
