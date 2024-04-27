@@ -93,7 +93,7 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'mhinz/vim-startify'   " 输入 vim 显示图案好看
 Plugin 'flazz/vim-colorschemes'
-"Plugin 'neoclide/coc.nvim'
+Plugin 'neoclide/coc.nvim'
 Plugin 'Yggdroot/LeaderF' "LeaderF模糊查找插件
 
 " markdown
