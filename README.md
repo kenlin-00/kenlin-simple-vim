@@ -544,6 +544,15 @@ vim --version | grep +python
 
 > 参考：https://retzzz.github.io/dc9af5aa/
 
+## markdown
+
+```shcd ~/.vim/bundle
+git clone https://github.com/tamlok/vim-markdown.git
+
+Plugin 'tamlok/vim-markdown'
+```
+
+
 ## 其他配置
 
 ### 设置切换目录快捷键
