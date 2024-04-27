@@ -18,7 +18,7 @@ set nu   " 显示行号
 
 syntax on "自动语法高亮
 set hlsearch " 搜索高亮
-set incsearch
+set incsearch "输入关键字的时候高亮显示
 
 "vim自动打开跳到上次的光标位置
 if has("autocmd")
@@ -94,8 +94,11 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'mhinz/vim-startify'   " 输入 vim 显示图案好看
 Plugin 'flazz/vim-colorschemes'
-Plugin 'neoclide/coc.nvim'
+"Plugin 'neoclide/coc.nvim'
 Plugin 'Yggdroot/LeaderF' "LeaderF模糊查找插件
+
+" markdown
+Plugin 'tamlok/vim-markdown'
 call vundle#end()
 filetype plugin indent on
 
@@ -103,6 +106,7 @@ filetype plugin indent on
 " filetype plugin on
 
 " 不使用任何插件管理的插件
+" set runtimepath ? 查看
 set runtimepath^=~/.vim/bundle/ag
 
 " ag
@@ -310,6 +314,11 @@ noremap <C-F> :<C-U><C-R>=printf("Leaderf! rg -e %s ", expand("<cword>"))<CR>
 " Files you don't want LeaderF to record
 let g:Lf_MruFileExclude = ['*.so', '*.o', "*.ko", "*.out", "tags"]
 
+" markdown
+let g:markdown_include_jekyll_support = 0
+let g:markdown_enable_insert_mode_mappings = 0
+let g:markdown_enable_spell_checking = 0
+let g:markdown_enable_conceal = 1
 
 """"""""""""""""
 " 搜索忽略大小写
