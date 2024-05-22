@@ -546,10 +546,14 @@ vim --version | grep +python
 
 ## markdown
 
-```shcd ~/.vim/bundle
+```sh
+cd ~/.vim/bundle
 git clone https://github.com/tamlok/vim-markdown.git
 
 Plugin 'tamlok/vim-markdown'
+
+# 下载
+:PluginInstall
 ```
 
 
