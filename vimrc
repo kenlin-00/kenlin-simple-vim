@@ -287,3 +287,5 @@ match extraSpace /\v\s+$/ " 匹配行尾空格
 set noswapfile
 set autoread  " 实时加载最新的文件，如果在其他地方修改
 
+"  avoid this message about upgrading vim.
+let g:coc_disable_startup_warning = 1
