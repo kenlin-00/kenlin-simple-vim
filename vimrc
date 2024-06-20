@@ -16,7 +16,7 @@ set showmatch
 set cursorline     " 行
 set nu   " 显示行号
 
-" syntax on "自动语法高亮
+syntax on "自动语法高亮
 set hlsearch " 搜索高亮
 set incsearch "输入关键字的时候高亮显示
 
