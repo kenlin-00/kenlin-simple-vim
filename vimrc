@@ -33,11 +33,11 @@ function! ToggleAutochdir()
 	if &acd
 		set noacd
 		execute 'cd ' . g:original_cwd
-		echo "禁用自动切换工作目录"
 	else
 		set acd
-		echo "启用自动切换工作目录"
 	endif
+
+	echo "now at: " . "." . substitute(getcwd(), '^' . escape(g:original_cwd, '/\'), '', '')
 endfunction
 
 
