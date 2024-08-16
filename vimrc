@@ -50,7 +50,7 @@ set noexpandtab  " 不转成空格
 " autocmd FIletype json,xml,c,cpp,h,vim,conf,bind,gitcommit setlocal tabstop=8 softtabstop=8 shiftwidth=8 noexpandtab
 autocmd FIletype dtsi,dts,gitcommit setlocal tabstop=2 softtabstop=2 shiftwidth=2 noexpandtab
 autocmd FIletype c setlocal tabstop=8 softtabstop=8 shiftwidth=8 noexpandtab
-autocmd FIletype xml,cc,cpp,h setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
+autocmd FIletype xml,cc,cpp,h setlocal tabstop=2 softtabstop=2 shiftwidth=2 noexpandtab
 autocmd FIletype sh,mk,make setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab  " for google project
 autocmd FIletype py,json setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 
