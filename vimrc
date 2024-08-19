@@ -79,6 +79,9 @@ function! SetTabWidth()
 	endif
 endfunction
 
+" 设置 paste 和 nopaste 快捷键 vp
+nnoremap <leader>vp :set paste!<CR>:set paste?<CR>
+
 set nocompatible              " 去除VI一致性,必须要添加
 filetype off                  " 必须要添加
 
