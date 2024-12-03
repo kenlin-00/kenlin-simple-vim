@@ -97,6 +97,24 @@ set runtimepath^=~/.vim/bundle/ag
 
 sudo apt-get install silversearcher-ag
 
+- 下載源码
+
+- github: https://github.com/ggreer/the_silver_searcher
+- reelase: https://geoff.greer.fm/ag/
+
+```sh
+wget https://geoff.greer.fm/ag/releases/the_silver_searcher-2.2.0.tar.gz
+tar zxf the_silver_searcher-2.2.0.tar.gz
+cd the_silver_searcher-2.2.0
+
+sudo apt install liblzma-dev
+./configure --prefix=$PWD/output
+make ; make install
+# 加入环境变量
+```
+
+- 使用
+
 ```
 ag -i xxxxx					搜索忽略大小写
 ag -A xxxxx     			搜索显示行号
@@ -279,6 +297,19 @@ let g:airline_theme='google_dark'
 
 sudo apt-get install ctags
 
+- 源码编译
+
+```sh
+git clone https://github.com/universal-ctags/ctags.git
+# git reset --hard be5b1fc65e537093a6f1ec339b04bb45d044b980 (这里验证ok)
+cd ctags
+./autogen.sh
+./configure --prefix=$PWD/output
+make -j8
+make install
+# 加入环境变量
+```
+
 -  使用 ctags
 
 在源码目录下执行： `ctags -R` ，然后会生成一个 tags 文件，其实这个 tags 文件就是你的编码的所有文件的索引（比如变量索引，函数索引）。
@@ -315,29 +346,24 @@ ctags -R --languages=c,c++ /path/to/folder1 /path/to/folder2
 
 #### global
 
-> 详情： [主页](https://www.gnu.org/software/global/)
+>  详情： [主页](https://www.gnu.org/software/global/)
+>
+> https://ftp.gnu.org/pub/gnu/global/
 
-```
-# - 下载
+```sh
+# 下载
 # 以下命令中的-O和-符号分别表示从标准输出和标准输入中读取和写入数据
-$ wget -O - https://ftp.gnu.org/pub/gnu/global/global-6.6.9.tar.gz | tar xzf - -C $HOME/.vim/bundle/
+wget  https://ftp.gnu.org/pub/gnu/global/global-6.6.8.tar.gz
+tar -zxf global-6.6.8.tar.gz
+cd global-6.6.8
 
 # - 编译
-$ cd $HOME/.vim/bundle/global-6.6.9 && chmod 777 ./configure && ./configure > /dev/null && make -j8 > /dev/null
+./configure --prefix=$PWD/output
+make -j8
+make install
 
-# - 安装(可忽略)
-$ cd $HOME/.vim/bundle/global-6.6.9 && mkdir -p plugin && cp gtags.vim gtags-cscope.vim plugin
-$ cd $HOME/.vim/bundle/global-6.6.9 && ls $HOME/bin && \
-  ln -s  $PWD/global/global $HOME/bin/global && \
-  ln -s  $PWD/gtags/gtags $HOME/bin/gtags && \
-  ln -s  $PWD/htags/htags $HOME/bin/htags && \
-  ln -s  $PWD/gtags-cscope/gtags-cscope $HOME/bin/gtags-cscope
-
-# - 配置环境变量, 并重连终端 (若已配置该环境变量 - 可跳过)
-$ echo "export PATH=\$PATH:$HOME/bin"      >> /home/$USER/.bashrc
-
-# 检查命令是否生效
-$ which global gtags htags gtags-cscope
+# 配置环境变量
+export PATH=$HOME/simple-vim/tools/global-6.6.8/output/bin:$PATH
 ```
 
 - 配置和快捷键
@@ -601,26 +627,29 @@ sudo apt install libncurses5-dev
 sudo apt-get install python3-dev
 ```
 
-- 克隆Vim源代码，并进入目录
+- vim 官网： https://github.com/vim/vim.git
+
+- 克隆Vim源代码
 
 ```sh
-# 这个连接可能不能访问了
-git clone https://github.com/vim/vim
+git clone https://github.com/vim/vim.git
 ```
 
+- 直接下 8.2 载源码
+
 ```sh
-wget https://ftp.nluug.nl/pub/vim/unix/vim-9.0.tar.bz2
+wget https://ftp.nluug.nl/pub/vim/unix/vim-8.2.tar.bz2
 
-tar -xjf  vim-9.0.tar.bz2
+tar -xj fvim-8.2.tar.bz2
 
-cd vim90
- ```
+cd vim80
+```
 
 - 编译
 
 ```sh
 # 自己修改输出路径
-./configure --with-features=huge --prefix=$HOME/simple-vim/vim-9.0/ --enable-gui=gtk3 --with-tlib=ncursesw --enable-pythoninterp=yes  --enable-python3interp=yes
+./configure --with-features=huge --prefix=$HOME//simple-vim/tools/vim82/output/ --enable-gui=gtk3 --with-tlib=ncursesw --enable-pythoninterp=yes  --enable-python3interp=yes
 
 # –with-features=huge：支持最大特性
 # –enable-rubyinterp：打开对ruby编写的插件的支持
