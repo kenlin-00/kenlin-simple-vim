@@ -32,10 +32,10 @@ if [[ $1 == "clean" ]]; then
 fi
 
 # 查找文件并将结果输出到 gtags.files
-directory="${HOME}/temp"
-if [ ! -d "$directory" ]; then
-	mkdir "$directory"
-fi
+#directory="${HOME}/temp"
+#if [ ! -d "$directory" ]; then
+#	mkdir "$directory"
+#fi
 #find ./ -name "*.h" -o -name "*.c" -o -name "*.cpp" -o -name "*.cc" -o -name "*.cxx" > ${directory}/gtags.files
 
 # 创建gtags索引
