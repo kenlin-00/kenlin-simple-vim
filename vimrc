@@ -232,7 +232,7 @@ set pumheight=12  " 补全菜单太长
 
 "LeaderF 模糊文件查找配置
 let g:Lf_UseVersionControlTool=1 "这个是默认选项, 可以不写
-let g:Lf_DefaultExternalTool='rg'  " 设置用第三方工具查找 这个选项可以是'rg', 'pt', 'ag', 'find'之一, 顺序代表优先级
+let g:Lf_DefaultExternalTool='ag'  " 设置用第三方工具查找 这个选项可以是'rg', 'pt', 'ag', 'find'之一, 顺序代表优先级
 " 件快速搜索 快捷键
 let g:Lf_ShortcutF = '<c-p>'
 let g:Lf_StlSeparator = { 'left': '', 'right': '', 'font': '' }
@@ -295,4 +295,4 @@ let g:coc_disable_startup_warning = 1
 
 " 默认显示 tab， 如果不需要显示 set nolist
 set list
-set listchars=tab:\|\   " 需要有一个空格在后面你
+set listchars=tab:\|\   " 注意：需要有一个空格在后面
