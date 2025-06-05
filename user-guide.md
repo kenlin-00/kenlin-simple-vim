@@ -72,7 +72,7 @@ make install
 # 把 ~/simple-vim/tools/global-6.6.8/output/bin 加入环境变量
 ```
 
-- 安装 ctags
+- **安装 ctags**
 
 ```sh
 # 如果已经有 ctags，可以跳过该步骤
@@ -145,7 +145,7 @@ run-tags.sh .
 run-tags.sh clean # 清空跳转文件
 
 # 使用 vim 在 GPATH  GRTAGS  GTAG tags 跳转文件 的目录打开代码，就能实现代码跳转
-vim kernel-6.6/drivers/leds/leds-pwm.c 
+vim kernel-6.6/drivers/leds/leds-pwm.c
 ```
 
 - ccs : 查看函数调用关系
@@ -194,7 +194,7 @@ ctrl + b
 
 ctrl + n
 
-### 模糊搜索文件和查看
+### 模糊搜索文件和查看 (fzf)
 
 ```sh
 ctrl + p
