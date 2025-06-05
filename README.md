@@ -1,5 +1,9 @@
 # README
 
+![](./vim-show.jpg)
+
+> **使用指南可直接参考：[user-guide](./user-guide.md)**
+
 ## All Plug include
 
 > **总结一款 simple-vim 插件配置，满足日常工作**，已经删除其他不常用的插件，配置文件中基本都有中文注释。
@@ -36,7 +40,6 @@ echo "proxy = $local_proxy" > $HOME/.curlrc
 ### 使用 Vundle 管理插件
 
 ```sh
-cd .vim
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 # 默认安装在/.vim/bundle/vundle下
 ```
@@ -640,9 +643,9 @@ git clone https://github.com/vim/vim.git
 ```sh
 wget https://ftp.nluug.nl/pub/vim/unix/vim-8.2.tar.bz2
 
-tar -xj fvim-8.2.tar.bz2
+tar -xf vim-8.2.tar.bz2
 
-cd vim80
+cd vim-8.2
 ```
 
 - 编译
@@ -704,91 +707,3 @@ vim
 [vimrc配置文件](https://github.com/kendall-cpp/kendall-simple-vim/blob/master/vimrc)
 
 > **以上配置说明仅仅是参考，vimrc 配置会不定期更新，具体见 vimrc**
-
-## 快捷键汇总
-
-- 配置环境变量
-
-```sh
-export PATH=/mnt/nfsroot/xxxxxx/home/simple-vim/vim/global/bin:$PATH
-export PATH=/mnt/fileroot/xxxxxx/home/simple-vim:$PATH
-export PATH=/mnt/nfsroot/xxxxxx/home/.config/coc/extensions/coc-clangd-data/install/17.0.3/clangd_17.0.3/bin:$PATH
-```
-
-- 必须安装 ctags
-
-```sh
-apt install ctags
-```
-
-### cscope + ctags 跳转
-
-首先进入项目根目录，比如打开的项目是 kernel, 就在 kernel 最顶层目录执行 run-gtags 生成索引文件
-
-然后可以使用 gtags 快捷键
-
-- ccs : 查看函数调用关系，**一般使用这个最多**
-- ccg : 搜索字符
-- ccc : 搜索被调用的地方
-- ctrl + ] 跳转到函数定义出
-- ctrl + t 返回 `ctrl + ]`
-- ctrl + o 返回上一处
-
-
-### 是否自动切换到当前文件目录
-
-按 `'\'` 然后按 cd； 可以选择是否进入当前文件的路径。
-
-然后可以使用 ag 快捷键搜索光标当前所在字符，超级好用！！！
-
-#### 使用 Ag 搜索
-
-直接输入 ag , 在当前文件夹下搜索 光标所在处的字符。
-
-最后结合 `\ + cd` 快捷键使用，这样可以设置搜索的是当前文件的目录，还是搜索整个项目。
-
-- 按 q 可以退出
-
-
-### 设置 tab 的空格数
-
-按 '\' 然后按 ct
-
-- 例如输入： 4 no
-	- 表示 tab 设置为 4 ,且设置 noexpandtab（不转成空格）
-- 例如输入： 8
-	- 表示 tab 设置为 8 ,且设置 expandtab（转成空格）
-
-
-### 打开文件目录列表窗口
-
-ctrl + b
-
-使用 ctrl + w + 方向键 切换窗口（这是 vim 的快捷键，具体自己网络搜索）
-
-- 使用 回车键 打开文件
-- 也可以使用 t 打开文件, 然后使用 gt 切换（感觉不实用）
-
-### 打开函数和变量目录列表窗口
-
-ctrl + n
-
-###  其他
-
-```sh
-vim -O filt1.txt file2.txt  # 左右窗口打开两个文件
-vim -o filt1.txt file2.txt  # 上下窗口打开两个文件
-ctrl + w + w  或者  ctrl + w + 方向键 切换窗口
-
-ctrl + # 先上搜索
-ctrl + * 向下搜索
-也可以按 n 或者 N 上下搜索
-
-vim -t <函数名> 可以直接打开并跳到该函数位置，例如 vim -t OnUsbAudioUevent
-
-手动粘贴时格式不会乱，先打开粘贴模式，再粘贴
-:set paste
-
-查看当前文件 tab 大小,最后通过上面 ct 快捷键来设置
-:set tabstop
-```

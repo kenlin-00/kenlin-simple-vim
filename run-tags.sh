@@ -69,7 +69,6 @@ else
   exit 0
 fi
 
-
 # 定义排除的文件模式
 exclude_patterns="*.mod.c|*.o|*.xml|*.json|*.html"
 
