@@ -152,7 +152,5 @@ x509.genkey
 *.symversions
 
 # ignore another git repository
-/vim/bundle/*
-/vim/node/*
-/vim-new/*
+/tools/*
 
