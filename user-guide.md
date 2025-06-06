@@ -27,7 +27,7 @@ cd vim82
 ./configure --with-features=huge --prefix=$HOME/simple-vim/tools/vim82/output/ --enable-gui=gtk3 --with-tlib=ncursesw --enable-pythoninterp=yes  --enable-python3interp=yes
 make -j4
 make install
-# 最后将 ~/simple-vim/tools/vim82/output/bin$ 加入环境变量
+# 最后将 ~/simple-vim/tools/vim82/output/bin 加入环境变量
 ```
 
 - **安装 nodejs**
@@ -64,7 +64,7 @@ vim xxx.py
 cd ~/simple-vim/tools
 cp ./all-pkg/global-6.6.8.tar.gz  .
 tar zxf global-6.6.8.tar.gz
-rm tar zxf global-6.6.8.tar.gz
+rm global-6.6.8.tar.gz
 cd global-6.6.8
 chmod 777 ./configure && ./configure --prefix=$HOME/simple-vim/tools/global-6.6.8/output
 make -j8

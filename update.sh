@@ -35,17 +35,18 @@ fi
 if [ ! -d "vim" ]; then
   echo "vim directory does not exist, extracting vim.tar.gz..."
   tar zxf vim.tar.gz
+
+  # Check if 'all-pkg' directory exists, if not, extract all-pkg.tar.gz
+  if [ ! -d "all-pkg" ]; then
+    echo "all-pkg directory does not exist, extracting all-pkg.tar.gz..."
+    tar zxf all-pkg.tar.gz
+  else
+    echo "all-pkg directory already exists, skipping extraction."
+  fi
 else
   echo "vim directory already exists, skipping extraction."
 fi
 
-# Check if 'all-pkg' directory exists, if not, extract all-pkg.tar.gz
-if [ ! -d "all-pkg" ]; then
-  echo "all-pkg directory does not exist, extracting all-pkg.tar.gz..."
-  tar zxf all-pkg.tar.gz
-else
-  echo "all-pkg directory already exists, skipping extraction."
-fi
 popd
 
 ln -s simple-vim/tools/vim .vim
