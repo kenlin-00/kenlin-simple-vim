@@ -47,6 +47,9 @@ rm node-v20.10.0-linux-x64.tar.xz
 vim xxx.cpp
 :CocInstall coc-clangd coc-vimlsp # 安装C++相关依赖, 可能需要在一个 c++ 文件中执行
 :CocCommand clangd.install  # 安装C++相关依赖, 可能需要在一个 c++ 文件中执行
+# 这一步可能需要设置 npm 代理
+npm config set  proxy http://xxxxx
+npm config set  https-proxy http://xxxxx
 # 将 /home/dgt/.config/coc/extensions/coc-clangd-data/install/19.1.2/clangd_19.1.2/bin 加入环境变量
 ```
 
@@ -131,6 +134,14 @@ cd fzf
 
 ## 常用快捷键汇总
 
+### ctrl+s 保存文件
+
+注意需要把 echo stty -ixon 加入环境变量，防止锁住终端
+
+```sh
+echo "stty -ixon" >> ~/.bashrc
+```
+
 ### 生成代码跳转文件
 
 ```sh
@@ -159,17 +170,6 @@ vim kernel-6.6/drivers/leds/leds-pwm.c
 ### 切换到当前文件目录
 
 按 `'\'` 然后按 cd； 可以选择是否进入当前文件的路径。因为 vim 一般是在 代码源目录打开，使用 \ cd 就能进入打开的文件的目录。
-
-然后可以使用 ag 快捷键搜索光标当前所在字符，**超级好用！！！**
-
-#### 使用 Ag 搜索
-
-直接输入 ag , 在当前文件夹下搜索 光标所在处的字符。
-
-最后结合 `\ + cd` 快捷键使用，这样可以设置搜索的是当前文件的目录，还是搜索整个项目。
-
-- 按 q 可以退出
-
 
 ### 设置 tab 的空格数
 

@@ -294,5 +294,11 @@ set autoread  " 实时加载最新的文件，如果在其他地方修改
 let g:coc_disable_startup_warning = 1
 
 " 默认显示 tab， 如果不需要显示 set nolist
-set list
-set listchars=tab:\|\   " 注意：需要有一个空格在后面
+" set list
+" set listchars=tab:\|\   " 注意：需要有一个空格在后面
+
+" 注意需要把 echo stty -ixon加入环境变量： echo "stty -ixon" >> ~/.bashrc
+" 映射 Ctrl + s 为保存文件（:w）
+nnoremap <C-s> :w<CR>
+" 在插入模式下也生效（先退出插入模式再保存）
+inoremap <C-s> <Esc>:w<CR>a
