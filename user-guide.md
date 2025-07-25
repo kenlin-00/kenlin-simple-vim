@@ -18,6 +18,12 @@ cd ~/simple-vim
 - **自己编译安装 vim-8.2(建议)**
 
 ```sh
+udo apt-get install python3-dev
+udo apt install libncurses5-dev
+udo apt-get install vim-nox
+sudo apt-get install libcurl4-openssl-dev
+
+
 cd ~/simple-vim/tools
 wget https://ftp.nluug.nl/pub/vim/unix/vim-8.2.tar.bz2
 # 或者直接使用 cp all-pkg/vim-8.2.tar.bz2 .
