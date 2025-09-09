@@ -15,7 +15,14 @@ cd ~/simple-vim
 ./update.sh
 ```
 
-- **自己编译安装 vim-8.2(建议)**
+- 安装 vim
+
+```sh
+sudo apt install vim-nox
+```
+
+- **编译安装 vim-8.2**
+
 
 ```sh
 udo apt-get install python3-dev
