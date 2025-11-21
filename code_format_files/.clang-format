@@ -1,0 +1,96 @@
+---
+Language: Cpp
+BasedOnStyle: Google
+AccessModifierOffset: -2
+AlignAfterOpenBracket: Align
+AlignConsecutiveMacros: false
+AlignConsecutiveAssignments: false  # 设置结构体变量等号对齐
+AlignConsecutiveDeclarations: false  # 启用声明对齐
+AlignEscapedNewlines: Left
+AlignOperands: Align
+AlignTrailingComments: true
+AllowAllParametersOfDeclarationOnNextLine: false
+AllowShortBlocksOnASingleLine: false
+AllowShortCaseLabelsOnASingleLine: false
+AllowShortFunctionsOnASingleLine: Empty  # 函数体为空时 {} 在同一行
+AllowShortIfStatementsOnASingleLine: false
+AllowShortLoopsOnASingleLine: false
+AlwaysBreakAfterDefinitionReturnType: None
+AlwaysBreakAfterReturnType: None
+AlwaysBreakBeforeMultilineStrings: false
+AlwaysBreakTemplateDeclarations: Yes
+BinPackArguments: true
+BinPackParameters: true
+BreakBeforeBinaryOperators: None
+BreakBeforeBraces: Custom
+BreakBeforeInheritanceList: false
+BreakBeforeTernaryOperators: true
+BreakConstructorInitializers: BeforeComma
+BreakInheritanceList: BeforeComma
+BreakStringLiterals: false
+ColumnLimit: 100
+CompactNamespaces: false # 不压缩命名空间
+ConstructorInitializerAllOnOneLineOrOnePerLine: false # 构造函数初始化列表是否在一行
+ConstructorInitializerIndentWidth: 2 # 构造函数初始化列表缩进宽度设为 2
+ContinuationIndentWidth: 8  # 续行缩进宽度设为 8（多个tab）
+Cpp11BracedListStyle: false
+DeriveLineEnding: true
+DerivePointerAlignment: false
+DisableFormat: false
+ExperimentalAutoDetectBinPacking: false
+FixNamespaceComments: true
+IncludeBlocks: Preserve
+IncludeCategories:
+  - Regex: '^"(llvm|llvm-c|clang|clang-c)/'
+    Priority: 2
+  - Regex: '^(<|"(gtest|gmock|isl|json)/)'
+    Priority: 3
+  - Regex: '.*'
+    Priority: 1
+IncludeIsMainRegex: '(Test)?$'
+IndentCaseLabels: true  # 启用 case 标签缩进（  
+IndentPPDirectives: BeforeHash
+IndentWidth: 2  # 标准缩进为 2 个空格
+IndentWrappedFunctionNames: false
+KeepEmptyLinesAtTheStartOfBlocks: false
+MacroBlockBegin: ''
+MacroBlockEnd: ''
+MaxEmptyLinesToKeep: 1
+NamespaceIndentation: None
+ObjCBinPackProtocolList: Auto
+ObjCBlockIndentWidth: 4
+ObjCSpaceAfterProperty: false
+ObjCSpaceBeforeProtocolList: true
+PenaltyBreakAssignment: 2
+PenaltyBreakBeforeFirstCallParameter: 1
+PenaltyBreakComment: 300
+PenaltyBreakFirstLessLess: 100
+PenaltyBreakString: 1000
+PenaltyBreakTemplateDeclaration: 10
+PenaltyExcessCharacter: 1000000
+PenaltyReturnTypeOnItsOwnLine: 200
+PointerAlignment: Right
+ReflowComments: true
+SortIncludes: false
+SortUsingDeclarations: false
+SpaceAfterCStyleCast: false
+SpaceAfterLogicalNot: false
+SpaceAfterTemplateKeyword: true
+SpaceBeforeAssignmentOperators: true
+SpaceBeforeCpp11BracedList: false
+SpaceBeforeCtorInitializerColon: true
+SpaceBeforeInheritanceColon: true
+SpaceBeforeParens: ControlStatements
+SpaceBeforeRangeBasedForLoopColon: true
+SpaceInEmptyParentheses: false
+SpacesBeforeTrailingComments: 1
+SpacesInAngles: false
+SpacesInContainerLiterals: false
+SpacesInCStyleCastParentheses: false
+SpacesInParentheses: false
+SpacesInSquareBrackets: false
+Standard: Cpp11
+TabWidth: 4
+UseTab: Never # 使用空格而不是制表符
+TrimTrailingWhitespace: true    # 自动去掉尾部空格
+...
