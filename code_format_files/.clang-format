@@ -31,7 +31,7 @@ BreakStringLiterals: false
 ColumnLimit: 100
 CompactNamespaces: false # 不压缩命名空间
 ConstructorInitializerAllOnOneLineOrOnePerLine: false # 构造函数初始化列表是否在一行
-ConstructorInitializerIndentWidth: 2 # 构造函数初始化列表缩进宽度设为 2
+ConstructorInitializerIndentWidth: 4 # 构造函数初始化列表缩进宽度设为 2
 ContinuationIndentWidth: 8  # 续行缩进宽度设为 8（多个tab）
 Cpp11BracedListStyle: false
 DeriveLineEnding: true
@@ -50,7 +50,7 @@ IncludeCategories:
 IncludeIsMainRegex: '(Test)?$'
 IndentCaseLabels: true  # 启用 case 标签缩进（  
 IndentPPDirectives: BeforeHash
-IndentWidth: 2  # 标准缩进为 2 个空格
+IndentWidth: 4  # 标准缩进为 2 个空格
 IndentWrappedFunctionNames: false
 KeepEmptyLinesAtTheStartOfBlocks: false
 MacroBlockBegin: ''
