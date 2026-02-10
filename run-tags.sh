@@ -87,7 +87,7 @@ function run_ctags() {
   # 生成 ctags 文件
   echo "Generating ctags for $path1 and $path2 $path3 ..."
 
-  cmd="ctags --fields=+iaS --extra=+q * --languages=c,c++ -R"
+  cmd="ctags -R --fields=+iaS --extra=+q --exclude=build * --languages=c,c++"
   for arg in "$@"
   do
     cmd="$cmd $arg"

@@ -1,14 +1,14 @@
 ---
 Language: Cpp
 BasedOnStyle: Google
-AccessModifierOffset: -2
+AccessModifierOffset: -4 # 访问修饰符（public、private、protected）与类的大括号对
 AlignAfterOpenBracket: Align
 AlignConsecutiveMacros: false
 AlignConsecutiveAssignments: false  # 设置结构体变量等号对齐
 AlignConsecutiveDeclarations: false  # 启用声明对齐
 AlignEscapedNewlines: Left
 AlignOperands: Align
-AlignTrailingComments: true
+AlignTrailingComments: true  # 注释对齐
 AllowAllParametersOfDeclarationOnNextLine: false
 AllowShortBlocksOnASingleLine: false
 AllowShortCaseLabelsOnASingleLine: false
@@ -23,13 +23,15 @@ BinPackArguments: true
 BinPackParameters: true
 BreakBeforeBinaryOperators: None
 BreakBeforeBraces: Custom
-BreakBeforeInheritanceList: false
+BraceWrapping:
+  AfterEnum: true
 BreakBeforeTernaryOperators: true
 BreakConstructorInitializers: BeforeComma
 BreakInheritanceList: BeforeComma
 BreakStringLiterals: false
 ColumnLimit: 100
 CompactNamespaces: false # 不压缩命名空间
+AllowAllConstructorInitializersOnNextLine: true
 ConstructorInitializerAllOnOneLineOrOnePerLine: false # 构造函数初始化列表是否在一行
 ConstructorInitializerIndentWidth: 4 # 构造函数初始化列表缩进宽度设为 2
 ContinuationIndentWidth: 8  # 续行缩进宽度设为 8（多个tab）
@@ -50,7 +52,7 @@ IncludeCategories:
 IncludeIsMainRegex: '(Test)?$'
 IndentCaseLabels: true  # 启用 case 标签缩进（  
 IndentPPDirectives: BeforeHash
-IndentWidth: 4  # 标准缩进为 2 个空格
+IndentWidth: 4  # 标准缩进为 4 个空格
 IndentWrappedFunctionNames: false
 KeepEmptyLinesAtTheStartOfBlocks: false
 MacroBlockBegin: ''
@@ -69,7 +71,7 @@ PenaltyBreakString: 1000
 PenaltyBreakTemplateDeclaration: 10
 PenaltyExcessCharacter: 1000000
 PenaltyReturnTypeOnItsOwnLine: 200
-PointerAlignment: Right
+PointerAlignment: Left
 ReflowComments: true
 SortIncludes: false
 SortUsingDeclarations: false
@@ -83,7 +85,7 @@ SpaceBeforeInheritanceColon: true
 SpaceBeforeParens: ControlStatements
 SpaceBeforeRangeBasedForLoopColon: true
 SpaceInEmptyParentheses: false
-SpacesBeforeTrailingComments: 1
+SpacesBeforeTrailingComments: 0  # 注释后空格数
 SpacesInAngles: false
 SpacesInContainerLiterals: false
 SpacesInCStyleCastParentheses: false
@@ -92,5 +94,3 @@ SpacesInSquareBrackets: false
 Standard: Cpp11
 TabWidth: 4
 UseTab: Never # 使用空格而不是制表符
-TrimTrailingWhitespace: true    # 自动去掉尾部空格
-...
