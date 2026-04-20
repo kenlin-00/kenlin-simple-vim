@@ -40,7 +40,7 @@ function run_gtags() {
 
 function run_ctags() {
     echo "Generating ctags for $@"
-    cmd="ctags -R --fields=+iaS --extra=+q --exclude=build --languages=c,c++ $@"
+    cmd="ctags -R --fields=+iaS --extras=+q --exclude=build --languages=c,c++ $@"
     echo "Executing: $cmd"
 
     eval "$cmd" && {
