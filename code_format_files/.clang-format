@@ -2,7 +2,7 @@
 Language: Cpp
 BasedOnStyle: Google
 AccessModifierOffset: -4 # 访问修饰符（public、private、protected）与类的大括号对
-AlignAfterOpenBracket: Align
+AlignAfterOpenBracket: DontAlign
 AlignConsecutiveMacros: false
 AlignConsecutiveAssignments: false  # 设置结构体变量等号对齐
 AlignConsecutiveDeclarations: false  # 启用声明对齐
